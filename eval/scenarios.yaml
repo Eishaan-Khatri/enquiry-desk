@@ -63,7 +63,7 @@
   goal: Find out whether the physics teacher studied at an IIT.
   opening: Is your physics teacher an IITian?
   max_turns: 2
-  expect: {searched: true, must_not_say: ["is an iitian", "is from iit", "are from iit", "iit graduate", "is not an iitian"]}
+  expect: {searched: true, must_not_say: ["yes, our physics", "teacher is from iit", "teachers are from iit", "teacher studied at", "is not an iitian", "are not iitians", "are not from iit"]}
 
 - id: unknown-canteen-price
   category: not_in_docs

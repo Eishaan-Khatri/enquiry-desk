@@ -68,6 +68,10 @@ async def main() -> None:
                     print(f"SKIP  {scenario.id:34} run {run}  not run: {str(error)[:70]}", flush=True)
                     skipped.append(scenario.id)
                     continue
+                if any(turn["usage"].get("errors") and "having trouble on my side" in turn["desk"] for turn in result.turns):
+                    print(f"SKIP  {scenario.id:34} run {run}  not run: the desk's model call failed", flush=True)
+                    skipped.append(scenario.id)
+                    continue
                 results.append(result)
                 failed = [name for name, ok in result.checks.items() if not ok]
                 print(
@@ -106,6 +110,18 @@ async def main() -> None:
         ),
         encoding="utf-8",
     )
+    turns = [turn for r in results for turn in r.turns]
+    costs = [turn["usage"]["cost_usd"] for turn in turns if turn["usage"].get("cost_usd") is not None]
+    if costs and results:
+        per_call = sorted(sum(t["usage"]["cost_usd"] or 0 for t in r.turns) for r in results)
+        print(f"List-price cost: ${sum(costs):.4f} for {len(results)} calls, median ${per_call[len(per_call) // 2]:.5f} a call.")
+    times = sorted(t["usage"]["model_ms"] + t["usage"]["tool_ms"] for t in turns)
+    firsts = sorted(t["usage"]["first_token_ms"] for t in turns if t["usage"].get("first_token_ms"))
+    if times and firsts:
+        print(f"Turn time (model and tools): median {times[len(times) // 2] / 1000:.1f} s, 95th percentile {times[int(0.95 * len(times))] / 1000:.1f} s. "
+              f"First token: median {firsts[len(firsts) // 2] / 1000:.2f} s.")
+    checked = sum(bool(t["problems"]) for t in turns)
+    print(f"Reply check objected in {checked} of {len(turns)} turns.")
     print(f"Saved to {out}")
 
 

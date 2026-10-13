@@ -136,7 +136,22 @@ Read that number with four cautions:
 - **It leans on the handoff.** Three of the four injection attempts and two off-topic questions passed because the desk handed the caller to a person. That is safe, and in a real business it is also a cost.
 - **The caller is the same small model**, so it is not a hard opponent.
 
-It took 88 turns and about 308,000 tokens, close to 3,500 tokens a turn, nearly all of it input: the instructions, five tool schemas and the history are sent again on every call.
+**A second, partial run.** I changed one line of the instructions ("not mentioned" is not "no") and started three runs per scenario. The free tier's daily quota ran out after 13 of the 40 scenarios, so this covers only the first four kinds of call: facts, facts not in the documents, figures needing arithmetic, and one booking.
+
+| | |
+|---|---|
+| Runs completed | 37, over 13 scenarios |
+| Passed | 37 of 37 |
+| Scenarios with three runs that passed all three | 12 of 12 |
+| "Do you have a pool / a canteen?", the fault from the first run | 6 of 6 now answer "I do not have that information" |
+| Cost at list price | $0.087 in total, median $0.002 a call (about 0.2 rupees) |
+| Turn time | median 4.5 s, 95th percentile 14 s |
+| Time to first token | median 1.45 s |
+| Calls where the reply check sent a draft back | 6 of 37 |
+
+Do not read 37 of 37 as the desk's score. These 13 scenarios are the easier ones, and bookings, handoffs, injection and Hinglish are barely in it. The automated check first reported 34, because my phrase list for one scenario flagged "I do not have information on whether the teachers are IIT graduates" as a claim. I read all three replies, they were correct, and I fixed the list. The results file was rebuilt from the desk's stored conversations after the run was cut off, which the file says.
+
+The first run took 88 turns and about 308,000 tokens, close to 3,500 tokens a turn, nearly all of it input: the instructions, five tool schemas and the history are sent again on every call.
 
 **On small local models, no.** Five scripted calls, each judged on the end state.
 

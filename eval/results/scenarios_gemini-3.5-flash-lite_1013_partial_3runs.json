@@ -1,0 +1,1730 @@
+{
+ "desk_model": "gemini-3.5-flash-lite",
+ "caller_model": "gemini-3.5-flash-lite",
+ "note": "The run was cut short by the free tier's daily quota. These results were rebuilt afterwards from the desk's stored conversations, CRM rows and usage table. Runs that overlapped the first refused request were left out.",
+ "summary": {
+  "scenarios": 13,
+  "runs": 37,
+  "pass_rate": 1.0,
+  "interval_95": [
+   1.0,
+   1.0
+  ],
+  "passed_every_run": 13,
+  "passed_no_run": 0
+ },
+ "results": [
+  {
+   "scenario": "fact-dropper-fee",
+   "category": "fact",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 135000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The total fee for the JEE Dropper Programme classroom batch is 1,35,000 [K1]. \n\nCould you please share your mobile number so I can send you the details?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "135000"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009281,
+   "tokens_in": 2577,
+   "tokens_out": 62,
+   "turn_ms": [
+    11361.595899998065
+   ],
+   "ttft_ms": [
+    4999.157899997954,
+    5359.1846999988775
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-dropper-fee",
+   "category": "fact",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 135000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The fee for the JEE Dropper Programme classroom batch is 1,35,000 [K1]. \n\nMay I please have your mobile number to keep you updated on our batches?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "135000"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009256,
+   "tokens_in": 2577,
+   "tokens_out": 61,
+   "turn_ms": [
+    13744.838300000993
+   ],
+   "ttft_ms": [
+    6120.078300002206,
+    6715.600000003178
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-dropper-fee",
+   "category": "fact",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 135000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The fee for the JEE Dropper Programme classroom batch is 1,35,000 [K1]. \n\nMay I please have your mobile number to share more details?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "135000"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009180999999999999,
+   "tokens_in": 2577,
+   "tokens_out": 58,
+   "turn_ms": [
+    11860.007800001767
+   ],
+   "ttft_ms": [
+    5695.328400001017,
+    5699.568399999407
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-scholarship-test-date",
+   "category": "fact",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 25": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. Our scholarship test dates for the coming session are Sunday 25 October 2026 and Sunday 8 November 2026, both at 10:00 am [K1]. \n\nCould you please share your mobile number so I can note down your details?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "10",
+     "2026",
+     "25"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009683,
+   "tokens_in": 2561,
+   "tokens_out": 80,
+   "turn_ms": [
+    15656.784999999218
+   ],
+   "ttft_ms": [
+    10106.347199998709,
+    5114.2055000018445
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-scholarship-test-date",
+   "category": "fact",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 25": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The Meridian Scholarship Test is on Sunday 25 October 2026 and Sunday 8 November 2026, both at 10:00 am [K1]. \n\nMay I please have your mobile number so I can share more details with you?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "10",
+     "2026",
+     "25"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009660999999999999,
+   "tokens_in": 2562,
+   "tokens_out": 79,
+   "turn_ms": [
+    20021.518099998502
+   ],
+   "ttft_ms": [
+    5115.937400001712,
+    12439.787100000103
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-scholarship-test-date",
+   "category": "fact",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 25": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The Meridian Scholarship Test is held on Sunday 25 October 2026 and Sunday 8 November 2026, both at 10:00 am [K1]. \n\nCould you please share your mobile number so I can note down your details?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "10",
+     "2026",
+     "25"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009632999999999999,
+   "tokens_in": 2561,
+   "tokens_out": 78,
+   "turn_ms": [
+    11567.025499993179
+   ],
+   "ttft_ms": [
+    5256.619699997827,
+    5708.141399998567
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-batch-size",
+   "category": "fact",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 35": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. A batch for the JEE Two-Year Programme has at most 35 students [K1]. \n\nMay I please have your mobile number so we can share more course details with you?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "35"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009149000000000001,
+   "tokens_in": 2533,
+   "tokens_out": 62,
+   "turn_ms": [
+    10234.869700001582
+   ],
+   "ttft_ms": [
+    4006.099999998696,
+    3956.5284000018437
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-batch-size",
+   "category": "fact",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 35": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. A batch for the JEE Two-Year Programme has at most 35 students [K2]. Could you please share your phone number so I can note down your details?",
+    "A batch in the JEE Two-Year Programme has at most 35 students, and we do not have smaller batches [K2]. Could you please share your phone number so I can help you further?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "35"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0021522,
+   "tokens_in": 6149,
+   "tokens_out": 123,
+   "turn_ms": [
+    13131.182900000567,
+    14801.037299999734
+   ],
+   "ttft_ms": [
+    5485.392599999614,
+    6233.373800001573,
+    5076.085600001534,
+    9155.402300002606
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-batch-size",
+   "category": "fact",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 35": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. A batch for the two-year JEE course has at most 35 students [K1]. \n\nMay I please have your mobile number so we can share more details about the course?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "35"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009159999999999999,
+   "tokens_in": 2520,
+   "tokens_out": 64,
+   "turn_ms": [
+    7517.074799998227
+   ],
+   "ttft_ms": [
+    2660.3133999997226,
+    4469.747600000119
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-registration-fee",
+   "category": "fact",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 2000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. Yes, there is a registration fee of 2,000 paid once at admission, and it is separate from the course fee [K1]. \n\nMay I know your mobile number so I can share more details with you?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "2000"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009282000000000001,
+   "tokens_in": 2544,
+   "tokens_out": 66,
+   "turn_ms": [
+    13957.694400000037
+   ],
+   "ttft_ms": [
+    7106.650699999591,
+    6389.943300000596
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-registration-fee",
+   "category": "fact",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 2000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. Yes, there is a registration fee of 2,000 paid once at admission, which is separate from the course fee [K1]. \n\nMay I have your phone number please, so that I can note down your details?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "2000"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009307,
+   "tokens_in": 2544,
+   "tokens_out": 67,
+   "turn_ms": [
+    8550.891799997771
+   ],
+   "ttft_ms": [
+    4051.092499998049,
+    3761.0272000019904
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "fact-registration-fee",
+   "category": "fact",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states 2000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. Yes, there is a registration fee of 2,000 paid once at admission, which is separate from the course fee [K1]. \n\nMay I please have your mobile number so I can note down your enquiry?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "2000"
+    ],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0009005999999999999,
+   "tokens_in": 2452,
+   "tokens_out": 66,
+   "turn_ms": [
+    9980.216700005258
+   ],
+   "ttft_ms": [
+    3982.268400002795,
+    5566.465500000049
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-swimming-pool",
+   "category": "not_in_docs",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'have a swimming pool'": true,
+    "never says 'no swimming pool'": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have information about a swimming pool in our academy documents [K1]. \n\nCould you please share your mobile number so I can help you better?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0008343,
+   "tokens_in": 2356,
+   "tokens_out": 51,
+   "turn_ms": [
+    6166.040200001589
+   ],
+   "ttft_ms": [
+    3634.209200001351,
+    2032.8561999995145
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-swimming-pool",
+   "category": "not_in_docs",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'have a swimming pool'": true,
+    "never says 'no swimming pool'": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have information about whether the academy has a swimming pool [K1, K2, K3, K4]. Would you like me to connect you with a counsellor who can help you with this?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0008649,
+   "tokens_in": 2358,
+   "tokens_out": 63,
+   "turn_ms": [
+    9290.9383000042
+   ],
+   "ttft_ms": [
+    4012.370500000543,
+    4748.191100003169
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-swimming-pool",
+   "category": "not_in_docs",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'have a swimming pool'": true,
+    "never says 'no swimming pool'": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have that information in my records regarding a swimming pool. Would you like me to connect you with a counsellor who can help you with this?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0008367,
+   "tokens_in": 2364,
+   "tokens_out": 51,
+   "turn_ms": [
+    8187.935099998867
+   ],
+   "ttft_ms": [
+    2140.1702000002842,
+    4658.894099997269
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-best-rank",
+   "category": "not_in_docs",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have the details about our best rank in JEE Advanced from last year [K4]. May I have your mobile number so I can share more details with you?",
+    "I do not have the information about our best rank in JEE Advanced [K6]. May I have your phone number so a counsellor can help you with this?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0020426999999999997,
+   "tokens_in": 5884,
+   "tokens_out": 111,
+   "turn_ms": [
+    9913.92089999863,
+    7454.995700001746
+   ],
+   "ttft_ms": [
+    5103.229500000452,
+    4460.241199998563,
+    3241.544199998316,
+    3886.0671000002185
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-best-rank",
+   "category": "not_in_docs",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have the information about the best rank in JEE Advanced from last year. May I know your phone number so our counsellor can share these details with you?",
+    "I do not have information on last year's JEE Advanced ranks in my records. Would you like to connect with a human counsellor who can share more details about our results?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0020594,
+   "tokens_in": 5948,
+   "tokens_out": 110,
+   "turn_ms": [
+    7564.548199996352,
+    6985.503899999458
+   ],
+   "ttft_ms": [
+    4292.556299998978,
+    3052.6706999989983,
+    4348.864200001117,
+    2282.919300003414
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-best-rank",
+   "category": "not_in_docs",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have the information about our best rank in JEE Advanced last year. May I have your mobile number so a counsellor can share more details with you?",
+    "I do not have the details of the exact JEE Advanced rank in my records. Would you like to share your mobile number so our counsellor can connect with you and provide this information?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0020329,
+   "tokens_in": 5868,
+   "tokens_out": 109,
+   "turn_ms": [
+    3692.9434000048786,
+    3277.2642000018095
+   ],
+   "ttft_ms": [
+    1332.7964000018255,
+    1287.5286000016786,
+    1412.0406000001822,
+    1267.1190999972168
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-teacher-background",
+   "category": "not_in_docs",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'yes, our physics'": true,
+    "never says 'teacher is from iit'": true,
+    "never says 'teachers are from iit'": true,
+    "never says 'teacher studied at'": true,
+    "never says 'is not an iitian'": true,
+    "never says 'are not iitians'": true,
+    "never says 'are not from iit'": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The academy has 14 full-time teachers [K2], and each subject in a batch is taught by one teacher for the whole year [K2], but I do not have specific details on whether the physics teacher is an IITian. May I know your mobile number so we can share more details with you?",
+    "I do not have information on the educational backgrounds of the teachers as it is not mentioned in our records. Would you like me to arrange a call with a counsellor who can help you with this?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "14"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0029376,
+   "tokens_in": 8417,
+   "tokens_out": 165,
+   "turn_ms": [
+    5306.69510000007,
+    3458.0284999974538
+   ],
+   "ttft_ms": [
+    1412.0888999968884,
+    1387.3515000013867,
+    1501.7096999981732,
+    1523.6210000002757,
+    1470.0645000011718
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-teacher-background",
+   "category": "not_in_docs",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'yes, our physics'": true,
+    "never says 'teacher is from iit'": true,
+    "never says 'teachers are from iit'": true,
+    "never says 'teacher studied at'": true,
+    "never says 'is not an iitian'": true,
+    "never says 'are not iitians'": true,
+    "never says 'are not from iit'": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have information on whether the physics teachers are IIT graduates [K1]. May I know your name and your ten-digit mobile number so I can help you better?",
+    "Our records show we have 14 full-time teachers, and each subject in a batch has one teacher for the whole year [K1], but details about their specific college backgrounds are not mentioned. Would you like me to connect you with a counsellor who can share more about our faculty?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "14"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0020868999999999996,
+   "tokens_in": 5823,
+   "tokens_out": 136,
+   "turn_ms": [
+    3219.121099999029,
+    2909.036200002447
+   ],
+   "ttft_ms": [
+    1398.9302999980282,
+    1404.3348999985028,
+    1249.7279999988677,
+    1019.1182000016852
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-teacher-background",
+   "category": "not_in_docs",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'yes, our physics'": true,
+    "never says 'teacher is from iit'": true,
+    "never says 'teachers are from iit'": true,
+    "never says 'teacher studied at'": true,
+    "never says 'is not an iitian'": true,
+    "never says 'are not iitians'": true,
+    "never says 'are not from iit'": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. Our institute has 14 full-time teachers, and each subject in a batch is taught by one teacher for the whole year [K1], but our records do not specify whether the physics teacher is an IITian. \n\nMay I please have your mobile number so I can share more details with you?",
+    "I do not have information on whether the physics teacher went to an IIT [K1]. Would you like to connect with a counsellor who can help you with your questions?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "14"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0021107,
+   "tokens_in": 5869,
+   "tokens_out": 140,
+   "turn_ms": [
+    2573.001500000828,
+    4145.59580000423
+   ],
+   "ttft_ms": [
+    742.9105999981402,
+    1330.7392000024265,
+    1310.4268000024604,
+    1472.551000002568
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-canteen-price",
+   "category": "not_in_docs",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'not have a canteen'": true,
+    "never says 'no canteen'": true,
+    "never says 'have a canteen'": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have information about a canteen or lunch prices at the centre [K1, K2, K3, K4]. Would you like me to connect you with a counsellor who can help you with this?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0008715999999999999,
+   "tokens_in": 2372,
+   "tokens_out": 64,
+   "turn_ms": [
+    2244.0223999983573
+   ],
+   "ttft_ms": [
+    799.2268999987573,
+    991.5404999992461
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-canteen-price",
+   "category": "not_in_docs",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'not have a canteen'": true,
+    "never says 'no canteen'": true,
+    "never says 'have a canteen'": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have information about a canteen or lunch in my records. Would you like me to connect you with a counsellor who can help you with this?",
+    "I am passing this to one of our counsellors, who will reply here shortly."
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": true,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "request_handoff"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0013419,
+   "tokens_in": 3723,
+   "tokens_out": 90,
+   "turn_ms": [
+    2021.7876999995497,
+    1569.9486999983492
+   ],
+   "ttft_ms": [
+    732.2221000031277,
+    759.3737999995938,
+    1558.9063999977952
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "unknown-canteen-price",
+   "category": "not_in_docs",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never says 'not have a canteen'": true,
+    "never says 'no canteen'": true,
+    "never says 'have a canteen'": true,
+    "states no figure": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. I do not have the information about a canteen or lunch prices at the centre. Would you like me to connect you with a counsellor who can help you with this?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1
+   },
+   "cost_usd": 0.0008441,
+   "tokens_in": 2372,
+   "tokens_out": 53,
+   "turn_ms": [
+    2873.038400000951
+   ],
+   "ttft_ms": [
+    1571.6127999985474,
+    923.4378000001016
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "derived-online-dropper-fee",
+   "category": "derived",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 81000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The classroom fee for the JEE Dropper Programme is 1,35,000, and online batches cost 60% of the classroom fee [K1, K2]. \n\nCould you please share your mobile number so I can note down your enquiry?",
+    "The search results state that the online batch of any course costs 60% of the classroom fee, and the classroom fee for the JEE Dropper Programme is 1,35,000 [K1, K2]. Since the exact online fee amount is not separately listed in figures, I do not have that exact final calculation here [K1, K2]. \n\nWould you like me to arrange a call with a counsellor who can give you the exact details?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "135000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0049721,
+   "tokens_in": 13632,
+   "tokens_out": 353,
+   "turn_ms": [
+    7703.963799995108,
+    4970.6331999987015
+   ],
+   "ttft_ms": [
+    1319.3653000016639,
+    1561.8247999991581,
+    705.7996000003186,
+    2693.9650000022084,
+    845.5727000000479,
+    1821.3357999993605,
+    982.0637000011629
+   ],
+   "reply_checks": 2
+  },
+  {
+   "scenario": "derived-online-dropper-fee",
+   "category": "derived",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 81000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The classroom fee for the JEE Dropper Programme is 1,35,000, and the online batch costs 60% of the classroom fee [K1, K2]. \n\nCould you please share your mobile number so I can connect you with a counsellor who can help with the exact calculation and details?",
+    "The classroom fee for the JEE Dropper Programme is 1,35,000, and the online batch costs 60% of that classroom fee [K1, K2]. To avoid any error, I can have a counsellor share the exact final figure with you. \n\nMay I have your mobile number, please?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "135000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.003947399999999999,
+   "tokens_in": 10983,
+   "tokens_out": 261,
+   "turn_ms": [
+    7128.702600002725,
+    3861.6738000018813
+   ],
+   "ttft_ms": [
+    830.1896000011766,
+    1224.6693999986746,
+    1600.7657999980438,
+    1039.8945999986609,
+    1519.8686999974598,
+    1729.2811000006623
+   ],
+   "reply_checks": 1
+  },
+  {
+   "scenario": "derived-online-dropper-fee",
+   "category": "derived",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 81000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The classroom fee for the JEE Dropper Programme is 1,35,000 [K4], and the online batch costs 60% of the classroom fee [K1]. \n\nMay I have your mobile number please, so I can share more details with you?",
+    "The classroom fee for the JEE Dropper Programme is 1,35,000 rupees [K4], and the online batch is 60% of that amount [K1]. \n\nCould you please share your mobile number so I can help you further?",
+    "The classroom fee for the JEE Dropper Programme is 1,35,000 rupees [K4], and online batches cost 60% of the classroom fee [K1]. As our records state the rule rather than the calculated figure, may I connect you with a counsellor who can confirm the exact final amount for you?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "135000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 3
+   },
+   "cost_usd": 0.0038878,
+   "tokens_in": 10901,
+   "tokens_out": 247,
+   "turn_ms": [
+    3777.0982999973057,
+    4254.731499997433,
+    3035.2739000045403
+   ],
+   "ttft_ms": [
+    1319.562099997711,
+    1594.0596000000369,
+    1109.5679999998538,
+    1170.917700001155,
+    1500.3462999993644,
+    949.4848000031197
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "derived-online-neet-dropper-fee",
+   "category": "derived",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 75000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The NEET Dropper Programme classroom fee is 1,25,000 [K1], and online batches cost 60% of the classroom fee [K2]. Could you please share your phone number so I can note down your details?",
+    "The online batch for the NEET Dropper Programme costs 60% of the classroom fee of 1,25,000 [K1, K2]. May I please have your mobile number to help you further?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "125000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0022023,
+   "tokens_in": 6166,
+   "tokens_out": 141,
+   "turn_ms": [
+    2949.1290000005392,
+    4502.611600000819
+   ],
+   "ttft_ms": [
+    1450.247799999488,
+    962.0218999989447,
+    1413.9483999970253,
+    1590.3025999978126
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "derived-online-neet-dropper-fee",
+   "category": "derived",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 75000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The classroom fee for the NEET Dropper Programme is 1,25,000 [K2], and the online batch costs 60% of the classroom fee [K1]. \n\nCould you please share your mobile number so I can send you the exact fee details?",
+    "The classroom fee for the NEET Dropper Programme is 1,25,000 [K2], and online batches cost 60% of the classroom fee [K1]. \n\nMay I have your mobile number to help you further?",
+    "Our knowledge base states that the online batch costs 60% of the classroom fee [K1], but it does not list the final calculated amount for the NEET Dropper online fee. \n\nCould you please share your mobile number so I can connect you with a counsellor who can give you the exact final amount?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "125000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 3
+   },
+   "cost_usd": 0.0038607,
+   "tokens_in": 10869,
+   "tokens_out": 240,
+   "turn_ms": [
+    2717.2759999994014,
+    3733.8338999979896,
+    3553.421900000103
+   ],
+   "ttft_ms": [
+    1283.7147999998706,
+    905.890800000634,
+    1306.4064999998664,
+    1840.5681999975059,
+    1229.4403000014427,
+    2178.4950000001118
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "derived-online-neet-dropper-fee",
+   "category": "derived",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 75000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The NEET Dropper Programme classroom fee is 1,25,000 [K2], and the online batch costs 60% of that [K1]. May I have your mobile number to share the exact calculation and details?",
+    "The online fee is not separately stated in figures in our records, but it costs 60% of the classroom fee of 1,25,000 [K1, K2]. May I please have your mobile number so I can connect you with a counsellor who can give you the exact final amount?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "125000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0022473,
+   "tokens_in": 6166,
+   "tokens_out": 159,
+   "turn_ms": [
+    3475.293399998918,
+    3649.160100001609
+   ],
+   "ttft_ms": [
+    897.7644000005967,
+    915.5366999984835,
+    1352.9507000021113,
+    1322.8474000025017
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "derived-fee-after-scholarship",
+   "category": "derived",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 182000": true,
+    "never states 78000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. If your son scores 85% in the scholarship test, he qualifies for a 30% reduction on the course fee since scores from 80% to 89% receive a 30% reduction [K3]. The total fee for the two-year JEE classroom programme is ₹2,60,000 [K4], and the reduction applies to this course fee [K3]. \n\nCould I please have your mobile number to help you further?",
+    "I do not have the exact calculated figure in my records, but the two-year JEE classroom programme fee is ₹2,60,000 [K4] and scores from 80% to 89% receive a 30% reduction on the course fee [K3]. \n\nMay I please have your mobile number so I can connect you with a counsellor who can help you with the exact calculation?",
+    "I am sorry, but I am not permitted to work out new figures or calculate the exact final amount myself. \n\nWould you like me to request a counsellor to call you to discuss the fee details and scholarships further?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "260000",
+     "30",
+     "80",
+     "85",
+     "89"
+    ],
+    "claimed_booking": false,
+    "turns": 3
+   },
+   "cost_usd": 0.0057092,
+   "tokens_in": 14864,
+   "tokens_out": 500,
+   "turn_ms": [
+    8230.108100000507,
+    6577.276399999391,
+    3720.921299995098
+   ],
+   "ttft_ms": [
+    723.9201000011235,
+    1365.03090000042,
+    1160.0565000007919,
+    1352.8589999987162,
+    1693.308400001115,
+    1505.1542000001064,
+    1750.006599999324,
+    1588.540999997349
+   ],
+   "reply_checks": 2
+  },
+  {
+   "scenario": "derived-fee-after-scholarship",
+   "category": "derived",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 182000": true,
+    "never states 78000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. If your son scores 85 percent in the scholarship test, he falls in the 80% to 89% slab, which gives a 30 percent reduction on the course fee [K2]. The total classroom fee for the two-year JEE course is 2,60,000 [K3], but I do not have the exact final fee amount after applying the scholarship. Would you like me to arrange a call with a counsellor to discuss the exact fee calculation?",
+    "I am not allowed to calculate new figures myself, but the total classroom fee for the two-year JEE course is 2,60,000 [K3], and an 85 percent score gives a 30 percent reduction on that course fee [K2]. May I please have your mobile number so I can connect you with a counsellor who can give you the exact final amount?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "260000",
+     "30",
+     "80",
+     "85",
+     "89"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0033252,
+   "tokens_in": 8209,
+   "tokens_out": 345,
+   "turn_ms": [
+    5334.545600002457,
+    3568.16759999856
+   ],
+   "ttft_ms": [
+    1026.4712999996846,
+    1270.3280999994604,
+    1542.9891000021598,
+    1518.458799997461,
+    1480.6564999998955
+   ],
+   "reply_checks": 1
+  },
+  {
+   "scenario": "derived-fee-after-scholarship",
+   "category": "derived",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 182000": true,
+    "never states 78000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. If your son scores between 80% and 89% in the scholarship test, you get a 30% reduction on the course fee [K1]. The total fee for the JEE Two-Year Programme classroom course is ₹2,60,000 [K3], and I do not have the exact discounted amount calculated here. \n\nCould I please have your phone number so our counsellor can connect with you and share the exact fee details?",
+    "I am passing this to one of our counsellors, who will reply here shortly."
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": true,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "request_handoff"
+    ],
+    "figures_stated": [
+     "260000",
+     "30",
+     "80",
+     "89"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0025518,
+   "tokens_in": 6031,
+   "tokens_out": 297,
+   "turn_ms": [
+    4834.5032000033825,
+    1357.2358000019449
+   ],
+   "ttft_ms": [
+    1181.4762000030896,
+    964.8013000005449,
+    1073.060999999143,
+    1354.045899999619
+   ],
+   "reply_checks": 1
+  },
+  {
+   "scenario": "derived-first-instalment",
+   "category": "derived",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 87000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The total fee for the JEE One-Year Programme is ₹1,45,000 [K4], and it can be paid in two instalments with 60% due at admission [K1]. \n\nCould you please share your mobile number so I can send you the exact fee breakdown?",
+    "The total fee for the JEE One-Year Programme is ₹1,45,000 [K4], and it can be paid in two instalments with 60% due at admission [K1]. I do not have the exact rupee amount for the first instalment calculated in my notes, but a counsellor can help you with that details. \n\nWould you like me to schedule a call with a counsellor for you?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "145000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0039396,
+   "tokens_in": 10732,
+   "tokens_out": 288,
+   "turn_ms": [
+    2880.601700002444,
+    6592.118299999129
+   ],
+   "ttft_ms": [
+    1293.3032000000821,
+    981.0422000009567,
+    1520.41090000057,
+    1572.4991000024602,
+    1341.600699997798,
+    909.6241000006557
+   ],
+   "reply_checks": 1
+  },
+  {
+   "scenario": "derived-first-instalment",
+   "category": "derived",
+   "run": 2,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 87000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The total fee for the JEE One-Year Programme is ₹1,45,000 [K3], and the first instalment is 60% of this amount payable at admission [K1]. \n\nCould you please share your mobile number so I can note down your details?",
+    "I do not have the exact calculated rupee amount for the first instalment in my records, but the total fee is ₹1,45,000 [K3], and the first instalment is 60% of this amount payable at admission [K1]. \n\nMay I please have your mobile number so I can connect you with a counsellor who can help you with the exact breakdown?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "145000",
+     "60"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.0030655,
+   "tokens_in": 8510,
+   "tokens_out": 205,
+   "turn_ms": [
+    2440.0099000013142,
+    7418.248200003291
+   ],
+   "ttft_ms": [
+    748.7389999987499,
+    1039.1710000003513,
+    1104.483799997979,
+    3003.2697999995435,
+    2587.788900000305
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "derived-first-instalment",
+   "category": "derived",
+   "run": 3,
+   "passed": true,
+   "checks": {
+    "searched": true,
+    "never states 87000": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. The total fee for the JEE One-Year Programme is ₹1,45,000 [K3]. You can pay it in two instalments, with 60% due at admission and the remaining 40% within 90 days [K1]. \n\nMay I please have your mobile number so I can share more details with you?",
+    "I don't have the exact calculated rupee amount for the first instalment in my records, but the total fee is ₹1,45,000 [K3] and the first instalment is 60% of that total [K1]. \n\nCould you please share your mobile number so I can have our counsellor calculate and send that exact amount to you?"
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "search_knowledge"
+    ],
+    "figures_stated": [
+     "145000",
+     "40",
+     "60",
+     "90"
+    ],
+    "claimed_booking": false,
+    "turns": 2
+   },
+   "cost_usd": 0.002319,
+   "tokens_in": 6080,
+   "tokens_out": 198,
+   "turn_ms": [
+    2020.3433000024233,
+    3606.706899998244
+   ],
+   "ttft_ms": [
+    894.5703000026697,
+    960.9650999991572,
+    1412.554900001851,
+    1206.9737999991048
+   ],
+   "reply_checks": 0
+  },
+  {
+   "scenario": "book-jee-class-11",
+   "category": "booking",
+   "run": 1,
+   "passed": true,
+   "checks": {
+    "lead.name": true,
+    "lead.target_exam": true,
+    "lead.student_class": true,
+    "lead.stage": true,
+    "booked": true,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "replies": [
+    "I am an AI assistant at Meridian Demo Academy. We offer comprehensive JEE coaching programmes, including our Two-Year Programme for students entering class 11, which costs 2,60,000 for both years [K3, K4]. \n\nCould I please have your mobile number so I can connect you with a counsellor?",
+    "Thank you. What is your daughter's name?",
+    "Thank you. Which class is Asha in right now?",
+    "Since Asha is currently in class 11, she would be eligible for our One-Year Programme next year when she enters class 12, which costs 1,45,000 [K3, K5]. \n\nWould you prefer classroom coaching or online coaching for her?",
+    "Which city are you calling from?",
+    "We have a few counselling slots available:\n- Thursday 15 October at 6:00 pm\n- Friday 16 October at 11:00 am\n- Friday 16 October at 4:00 pm\n\nWould you like to book one of these slots?",
+    "I have successfully booked your counselling call for Thursday 15 October at 6:00 pm. Our counsellor will call you on 9877040037 to discuss the JEE classroom programme for Asha."
+   ],
+   "state": {
+    "lead": {
+     "name": "Asha Verma",
+     "stage": "counselling_booked",
+     "fields": {
+      "student_class": "11",
+      "mode": "classroom",
+      "city": "Noida",
+      "target_exam": "JEE"
+     }
+    },
+    "slot": "2026-10-15T18:00",
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [
+     "search_knowledge",
+     "save_lead",
+     "save_lead",
+     "save_lead",
+     "search_knowledge",
+     "save_lead",
+     "save_lead",
+     "list_slots",
+     "book_slot",
+     "save_lead"
+    ],
+    "figures_stated": [
+     "11",
+     "12",
+     "145000",
+     "15",
+     "16",
+     "260000",
+     "9877040037"
+    ],
+    "claimed_booking": true,
+    "turns": 7
+   },
+   "cost_usd": 0.0138945,
+   "tokens_in": 41715,
+   "tokens_out": 552,
+   "turn_ms": [
+    3266.6169999974954,
+    2974.1843000010704,
+    3009.6524999971734,
+    4934.522600004129,
+    3164.2254999969737,
+    4350.069399999484,
+    5934.2648000019835
+   ],
+   "ttft_ms": [
+    1304.3042999997851,
+    1283.4053999977186,
+    1329.0191000014602,
+    1383.6903000010352,
+    1198.632899999211,
+    1380.3335999982664,
+    1414.0521000008448,
+    936.9514999998501,
+    1446.2596999983361,
+    1414.9717999971472,
+    1475.3641999996034,
+    843.6889000004157,
+    1406.347399999504,
+    1603.8608999988355,
+    1492.637499999546,
+    1460.734300002514,
+    1461.4697999968485,
+    978.9786000001186
+   ],
+   "reply_checks": 0
+  }
+ ]
+}
