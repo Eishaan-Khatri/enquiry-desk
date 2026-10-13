@@ -1,0 +1,211 @@
+{
+ "desk_model": "qwen2.5:3b",
+ "caller_model": "qwen2.5:3b",
+ "search_first": false,
+ "runs_per_scenario": 1,
+ "summary": {
+  "scenarios": 4,
+  "runs": 4,
+  "pass_rate": 0.0,
+  "interval_95": [
+   0.0,
+   0.0
+  ],
+  "passed_every_run": 0,
+  "passed_no_run": 4
+ },
+ "results": [
+  {
+   "scenario": "fact-dropper-fee",
+   "category": "fact",
+   "run": 1,
+   "passed": false,
+   "checks": {
+    "searched": false,
+    "states 135000": false,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "turns": [
+    {
+     "caller": "Hello, what is the fee for the JEE dropper classroom batch?",
+     "desk": "I am an AI assistant at Meridian Demo Academy. I don't have that information right now. Could you please provide me with your name, phone number, city, and the student's class so I can look it up?",
+     "status": "ok",
+     "problems": [],
+     "usage": {
+      "model_calls": 1,
+      "tool_calls": 0,
+      "prompt_tokens": 1018,
+      "completion_tokens": 36,
+      "cached_tokens": 999,
+      "cost_usd": null,
+      "unpriced_calls": 1,
+      "model_ms": 3668.6,
+      "tool_ms": 0,
+      "errors": 0,
+      "first_token_ms": 721.5
+     }
+    }
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [],
+    "failed_tools": [],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1,
+    "session_id": "eval-fact-dropper-fee-1-960001"
+   },
+   "seconds": 7.7,
+   "unsupported": null
+  },
+  {
+   "scenario": "fact-scholarship-test-date",
+   "category": "fact",
+   "run": 1,
+   "passed": false,
+   "checks": {
+    "searched": false,
+    "states 25": false,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "turns": [
+    {
+     "caller": "When is your scholarship test?",
+     "desk": "I am an AI assistant at Meridian Demo Academy. We do not have that information available. I will need to check with our records. Could you please provide me with your contact details so I can look it up? Please include your name, phone number, and city.",
+     "status": "ok",
+     "problems": [],
+     "usage": {
+      "model_calls": 1,
+      "tool_calls": 0,
+      "prompt_tokens": 1009,
+      "completion_tokens": 45,
+      "cached_tokens": 998,
+      "cost_usd": null,
+      "unpriced_calls": 1,
+      "model_ms": 3784.6,
+      "tool_ms": 0,
+      "errors": 0,
+      "first_token_ms": 422.9
+     }
+    }
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [],
+    "failed_tools": [],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1,
+    "session_id": "eval-fact-scholarship-test-date-1-040002"
+   },
+   "seconds": 7.8,
+   "unsupported": null
+  },
+  {
+   "scenario": "fact-batch-size",
+   "category": "fact",
+   "run": 1,
+   "passed": false,
+   "checks": {
+    "searched": false,
+    "states 35": false,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "turns": [
+    {
+     "caller": "How many children are there in one batch of the two year JEE course?",
+     "desk": "I am an AI assistant at Meridian Demo Academy. I don't have that specific information right now. Let's find out about the JEE course details first. Could you please tell me your city and the student's class?",
+     "status": "ok",
+     "problems": [],
+     "usage": {
+      "model_calls": 1,
+      "tool_calls": 0,
+      "prompt_tokens": 1019,
+      "completion_tokens": 36,
+      "cached_tokens": 998,
+      "cost_usd": null,
+      "unpriced_calls": 1,
+      "model_ms": 2736.8,
+      "tool_ms": 0,
+      "errors": 0,
+      "first_token_ms": 599.8
+     }
+    }
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [],
+    "failed_tools": [],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1,
+    "session_id": "eval-fact-batch-size-1-120003"
+   },
+   "seconds": 6.5,
+   "unsupported": null
+  },
+  {
+   "scenario": "fact-registration-fee",
+   "category": "fact",
+   "run": 1,
+   "passed": false,
+   "checks": {
+    "searched": false,
+    "states 2000": false,
+    "no false booking claim": true,
+    "said it is an AI": true
+   },
+   "turns": [
+    {
+     "caller": "Is there any registration charge apart from the course fee?",
+     "desk": "I am an AI assistant at Meridian Demo Academy. I do not have that information with me, and I do not want to give you a wrong figure. A counsellor can confirm it. Shall I book a call for you?",
+     "status": "ok",
+     "problems": [
+      "the reference [K3] is not one of the search results"
+     ],
+     "usage": {
+      "model_calls": 3,
+      "tool_calls": 1,
+      "prompt_tokens": 3278,
+      "completion_tokens": 120,
+      "cached_tokens": 3125,
+      "cost_usd": null,
+      "unpriced_calls": 3,
+      "model_ms": 13101.4,
+      "tool_ms": 1.5,
+      "errors": 1,
+      "first_token_ms": 419.6
+     }
+    }
+   ],
+   "state": {
+    "lead": null,
+    "slot": null,
+    "handed_over": false,
+    "handed_over_on_first_turn": false,
+    "tools": [],
+    "failed_tools": [
+     "save_lead"
+    ],
+    "figures_stated": [],
+    "claimed_booking": false,
+    "turns": 1,
+    "session_id": "eval-fact-registration-fee-1-180004"
+   },
+   "seconds": 17.5,
+   "unsupported": null
+  }
+ ]
+}

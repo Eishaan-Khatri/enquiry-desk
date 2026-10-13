@@ -1,0 +1,19 @@
+# Runs on every push and pull request. No model, no network service: the tests script the
+# model and run Qdrant in memory, so this job needs no secret.
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - run: uv sync
+      - run: uv run ruff check src tests eval
+      - run: uv run pytest -q

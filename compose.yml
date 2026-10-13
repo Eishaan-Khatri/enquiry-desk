@@ -1,0 +1,115 @@
+# Services the desk can use, all free and local.
+#
+#   docker compose up -d qdrant ollama                      the vector database and a model server
+#   docker compose exec ollama ollama pull qwen2.5:7b        once, about 4.7 GB
+#   docker compose --profile monitoring up -d               adds Prometheus, Grafana and Jaeger
+#
+# Then in .env:
+#   DESK_QDRANT_URL=http://localhost:6333
+#   DESK_LLM_BASE_URL=http://localhost:11434/v1
+#   DESK_LLM_MODEL=qwen2.5:7b
+#   DESK_OTLP_ENDPOINT=http://localhost:4318/v1/traces      to send traces to Jaeger
+#
+#   Prometheus  http://localhost:9090   (alerts are under "Alerts")
+#   Grafana     http://localhost:3000   (the "Enquiry Desk" dashboard, no login needed locally)
+#   Jaeger      http://localhost:16686  (pick the service "enquiry-desk")
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.19.1   # same minor version as qdrant-client in uv.lock
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  # A local model server that speaks the same Chat Completions format as the paid APIs.
+  # It runs on the CPU here, so it is slow. It is for development and for runs that must cost
+  # nothing. It is not vLLM: no continuous batching across many callers.
+  ollama:
+    image: ollama/ollama:0.40.3
+    ports:
+      - "11434:11434"
+    environment:
+      # The default context is too small for the instructions, five tool schemas, the history
+      # and four retrieved chunks. A prompt that overflows is cut from the front without an error.
+      OLLAMA_CONTEXT_LENGTH: "8192"
+      OLLAMA_KEEP_ALIVE: "30m"
+    volumes:
+      - ollama_models:/root/.ollama
+
+  prometheus:
+    image: prom/prometheus:v3.15.0
+    profiles: ["monitoring"]
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./ops/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./ops/alerts.yml:/etc/prometheus/alerts.yml:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # lets the container reach the desk on the laptop
+
+  grafana:
+    image: grafana/grafana:12.4.12
+    profiles: ["monitoring"]
+    ports:
+      - "3000:3000"
+    environment:
+      # Open access is for a laptop only. A deployed Grafana needs a login.
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
+    volumes:
+      - ./ops/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./ops/grafana/dashboards:/var/lib/grafana/dashboards:ro
+
+  jaeger:
+    image: jaegertracing/jaeger:2.22.0
+    profiles: ["monitoring"]
+    ports:
+      - "16686:16686"   # the web page
+      - "4318:4318"     # where the desk sends traces (OTLP over HTTP)
+
+  # The desk itself, in a container, with PostgreSQL in place of the SQLite files.
+  #
+  #   docker compose --profile app up -d --build
+  #
+  # The password below is for a laptop. A deployment takes it from a secret, not from this file.
+  postgres:
+    image: postgres:17-alpine
+    profiles: ["app"]
+    environment:
+      POSTGRES_PASSWORD: desk
+      POSTGRES_DB: desk
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 10
+
+  desk:
+    build: .
+    profiles: ["app"]
+    ports:
+      - "8000:8000"
+    environment:
+      # Inside the compose network each service is reached by its name, not by localhost.
+      DESK_DATABASE_URL: postgresql://postgres:desk@postgres:5432/desk
+      DESK_QDRANT_URL: http://qdrant:6333
+      DESK_LLM_BASE_URL: http://ollama:11434/v1
+      DESK_LLM_API_KEY: local
+      DESK_LLM_MODEL: qwen2.5:3b
+      DESK_LLM_TIMEOUT_S: "600"
+      DESK_EMBEDDER: fastembed
+      DESK_LOG_JSON: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    volumes:
+      - desk_data:/app/var   # keeps the downloaded embedding model between restarts
+
+volumes:
+  qdrant_data:
+  ollama_models:
+  postgres_data:
+  desk_data:

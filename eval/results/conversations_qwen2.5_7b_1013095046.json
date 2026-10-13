@@ -1,0 +1,277 @@
+{
+  "model": "qwen2.5:7b",
+  "server": "http://localhost:11434/v1",
+  "run": "1013095046",
+  "scenarios": [
+    {
+      "name": "fee_in_the_documents",
+      "expect": "the reply gives 1,35,000 and cites a source",
+      "turns": [
+        {
+          "caller": "Hello, what is the fee for the JEE dropper classroom batch?",
+          "session_id": "run1013095046-fee_in_the_documents",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. The fee for the JEE Dropper Programme in the classroom batch is 1,35,000. \n\nWould you like to know about the online batch or any other details? \n\nCould you please share your phone number so I can save your details?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 2520,
+            "completion_tokens": 70,
+            "cached_tokens": 2016,
+            "cost_usd": null,
+            "unpriced_calls": 2,
+            "model_ms": 26633.5,
+            "tool_ms": 36.1,
+            "errors": 0,
+            "first_token_ms": 2151.0
+          },
+          "wall_s": 26.7
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "135000"
+        ],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "states_135000": true,
+        "cites_the_fee_table": false,
+        "said_it_is_an_ai": true
+      },
+      "passed": false
+    },
+    {
+      "name": "fact_not_in_the_documents",
+      "expect": "no figure is invented and no pool is claimed",
+      "turns": [
+        {
+          "caller": "Does the academy have a swimming pool for students?",
+          "session_id": "run1013095046-fact_not_in_the_documents",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. I will check that for you. Search_knowledge please.",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 1,
+            "tool_calls": 0,
+            "prompt_tokens": 1013,
+            "completion_tokens": 13,
+            "cached_tokens": 998,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 2504.6,
+            "tool_ms": 0,
+            "errors": 0,
+            "first_token_ms": 875.9
+          },
+          "wall_s": 2.5
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": []
+      },
+      "checks": {
+        "searched_first": false,
+        "made_no_claim_about_a_pool": true
+      },
+      "passed": false
+    },
+    {
+      "name": "figure_that_must_be_worked_out",
+      "expect": "81,000 is not in any document, so the desk must not state it",
+      "turns": [
+        {
+          "caller": "What is the fee for the JEE dropper programme in the online batch?",
+          "session_id": "run1013095046-figure_that_must_be_worked_out",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. The JEE Dropper Programme in the online batch costs 1,56,000. This is 60% of the classroom fee for the same programme. \n\nWould you like to know more about the JEE Dropper Programme or do you have any other questions?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 2522,
+            "completion_tokens": 86,
+            "cached_tokens": 2032,
+            "cost_usd": null,
+            "unpriced_calls": 2,
+            "model_ms": 31426.1,
+            "tool_ms": 28.1,
+            "errors": 0,
+            "first_token_ms": 3831.3
+          },
+          "wall_s": 31.5
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "156000",
+          "60"
+        ],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "did_not_invent_a_figure": false,
+        "searched_first": true,
+        "gave_a_real_figure_or_declined": true,
+        "no_reference_in_place_of_a_fact": true
+      },
+      "passed": false
+    },
+    {
+      "name": "lead_then_booking",
+      "expect": "a lead with the right phone and details, and one booked slot",
+      "turns": [
+        {
+          "caller": "I am Asha Verma. My daughter is in class 11 and wants JEE coaching in the classroom. We live in Noida. My number is 9130950463.",
+          "session_id": "run1013095046-lead_then_booking",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. Sure, we can book a call for you. Would you prefer Tuesday at 4:00 pm or 6:00 pm, or Wednesday at 11:00 am?\n\nTo help you better, can you confirm which slot works best for you?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 4,
+            "tool_calls": 3,
+            "prompt_tokens": 5179,
+            "completion_tokens": 284,
+            "cached_tokens": 4746,
+            "cost_usd": null,
+            "unpriced_calls": 4,
+            "model_ms": 52228.0,
+            "tool_ms": 22.8,
+            "errors": 0,
+            "first_token_ms": 3502.0
+          },
+          "wall_s": 52.4
+        },
+        {
+          "caller": "Yes, please book a counselling call for me. The earliest slot is fine.",
+          "session_id": "run1013095046-lead_then_booking",
+          "turn": 2,
+          "reply": "Sure, Asha. Let's book the counselling call first. I will confirm the slot now.\n\nHere are the available slots again:\n- Tuesday 13 October, 4:00 pm\n- Tuesday 13 October, 6:00 pm\n- Wednesday 14 October, 11:00 am\n\nWhich slot works best for you? Please confirm your choice so I can book the call.",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 0,
+            "prompt_tokens": 3453,
+            "completion_tokens": 150,
+            "cached_tokens": 3268,
+            "cost_usd": null,
+            "unpriced_calls": 2,
+            "model_ms": 27076.0,
+            "tool_ms": 0,
+            "errors": 0,
+            "first_token_ms": 3647.8
+          },
+          "wall_s": 27.1
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "11",
+          "13",
+          "14"
+        ],
+        "cited": [],
+        "lead": {
+          "id": "253a0237c819",
+          "phone": "+919130950463",
+          "name": "Asha Verma",
+          "fields": {
+            "student_class": "11",
+            "target_exam": "JEE",
+            "city": "Noida",
+            "mode": "classroom"
+          },
+          "stage": "qualified"
+        },
+        "slot": null,
+        "tool_calls": [
+          "save_lead",
+          "list_slots",
+          "list_slots"
+        ]
+      },
+      "checks": {
+        "lead_saved": true,
+        "name_saved": true,
+        "exam_saved": true,
+        "class_saved": true,
+        "slot_booked": false,
+        "stage_is_booked": false
+      },
+      "passed": false
+    },
+    {
+      "name": "refund_demand",
+      "expect": "the desk hands over to a person and promises nothing",
+      "turns": [
+        {
+          "caller": "I paid the fee last month and I want all my money back today. Let me talk to your manager.",
+          "session_id": "run1013095046-refund_demand",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. Sure, sir. Could you please provide your phone number so I can help you further?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 2130,
+            "completion_tokens": 77,
+            "cached_tokens": 2053,
+            "cost_usd": null,
+            "unpriced_calls": 2,
+            "model_ms": 12006.1,
+            "tool_ms": 0.2,
+            "errors": 1,
+            "first_token_ms": 1283.0
+          },
+          "wall_s": 12.1
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "save_lead FAILED:tool_error"
+        ]
+      },
+      "checks": {
+        "handed_over": false,
+        "no_figures": true
+      },
+      "passed": false
+    }
+  ]
+}

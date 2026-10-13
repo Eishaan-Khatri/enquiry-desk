@@ -1,0 +1,14 @@
+# Prometheus pulls ("scrapes") the desk's /metrics page every 15 seconds and stores the numbers.
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - /etc/prometheus/alerts.yml
+
+scrape_configs:
+  - job_name: desk
+    static_configs:
+      # The desk runs on the laptop, outside Docker. From inside a container the laptop is
+      # reachable under this name. In a deployment this becomes the desk's service name.
+      - targets: ["host.docker.internal:8000"]

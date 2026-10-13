@@ -1,0 +1,13 @@
+# Token prices in US dollars per one million tokens.
+#
+# Nothing here is filled in on purpose. Add a row only after reading the provider's own pricing
+# page, and write the date you read it. A model with no row shows its cost as "unknown".
+#
+# [models."the-exact-model-name-you-send"]
+# input = 0.00          # per 1M input tokens
+# cached_input = 0.00   # per 1M cached input tokens (leave out if the provider has no discount)
+# output = 0.00         # per 1M output tokens
+# checked = "2026-10-13"
+# source = "https://..."
+
+[models]

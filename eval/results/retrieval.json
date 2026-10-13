@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-13",
+  "dense_model": "BAAI/bge-small-en-v1.5",
+  "sparse_model": "Qdrant/bm25",
+  "qdrant": "http://localhost:6333",
+  "chunks": 39,
+  "questions": 48,
+  "note": "Documents and questions were written by the same author for a fictional institute.",
+  "results": {
+    "dense": {
+      "plain": {
+        "n": 15,
+        "top1": 14,
+        "top4": 15,
+        "mrr": 0.967
+      },
+      "indirect": {
+        "n": 20,
+        "top1": 12,
+        "top4": 14,
+        "mrr": 0.661
+      },
+      "hinglish": {
+        "n": 13,
+        "top1": 8,
+        "top4": 11,
+        "mrr": 0.71
+      },
+      "all": {
+        "n": 48,
+        "top1": 34,
+        "top4": 40,
+        "mrr": 0.77
+      }
+    },
+    "sparse": {
+      "plain": {
+        "n": 15,
+        "top1": 13,
+        "top4": 15,
+        "mrr": 0.911
+      },
+      "indirect": {
+        "n": 20,
+        "top1": 5,
+        "top4": 9,
+        "mrr": 0.349
+      },
+      "hinglish": {
+        "n": 13,
+        "top1": 9,
+        "top4": 12,
+        "mrr": 0.806
+      },
+      "all": {
+        "n": 48,
+        "top1": 27,
+        "top4": 36,
+        "mrr": 0.648
+      }
+    },
+    "hybrid": {
+      "plain": {
+        "n": 15,
+        "top1": 13,
+        "top4": 15,
+        "mrr": 0.933
+      },
+      "indirect": {
+        "n": 20,
+        "top1": 9,
+        "top4": 15,
+        "mrr": 0.615
+      },
+      "hinglish": {
+        "n": 13,
+        "top1": 8,
+        "top4": 12,
+        "mrr": 0.772
+      },
+      "all": {
+        "n": 48,
+        "top1": 30,
+        "top4": 42,
+        "mrr": 0.757
+      }
+    }
+  },
+  "hybrid_misses": [
+    {
+      "q": "My daughter just finished her 12th boards and wants to try for engineering again next year. Which course is for her?",
+      "kind": "indirect",
+      "rank": 10,
+      "got": "courses.md > Courses > JEE courses > JEE One-Year Programme"
+    },
+    {
+      "q": "He was sick last week and could not come. How does he catch up?",
+      "kind": "indirect",
+      "rank": 7,
+      "got": "admission.md > Admission > Documents needed"
+    },
+    {
+      "q": "I want to switch from attending in person to studying from home midway.",
+      "kind": "indirect",
+      "rank": 5,
+      "got": "admission.md > Admission > How to join"
+    },
+    {
+      "q": "My son is in ninth standard. Is there anything for him?",
+      "kind": "indirect",
+      "rank": 9,
+      "got": "admission.md > Admission > Documents needed"
+    },
+    {
+      "q": "Do we have to pay to sit the paper that decides the fee waiver?",
+      "kind": "indirect",
+      "rank": null,
+      "got": "admission.md > Admission > How to join"
+    },
+    {
+      "q": "kya fees kisto mein de sakte hain?",
+      "kind": "hinglish",
+      "rank": 5,
+      "got": "fees.md > Fees"
+    }
+  ]
+}

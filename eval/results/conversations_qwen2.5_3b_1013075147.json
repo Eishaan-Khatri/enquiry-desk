@@ -1,0 +1,284 @@
+{
+  "model": "qwen2.5:3b",
+  "server": "http://localhost:11434/v1",
+  "run": "1013075147",
+  "scenarios": [
+    {
+      "name": "fee_in_the_documents",
+      "expect": "the reply gives 1,35,000 and cites a source",
+      "turns": [
+        {
+          "caller": "Hello, what is the fee for the JEE dropper classroom batch?",
+          "session_id": "run1013075147-fee_in_the_documents",
+          "turn": 1,
+          "reply": "Could you please provide me with your name, the city you live in, the student's current class, and their target exam? This information will help me find the correct fee for the JEE dropper classroom batch.",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 1,
+            "tool_calls": 0,
+            "prompt_tokens": 973,
+            "completion_tokens": 45,
+            "cached_tokens": 5,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 19147.5,
+            "tool_ms": 0,
+            "errors": 0,
+            "first_token_ms": 16074.0
+          },
+          "wall_s": 19.2
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": []
+      },
+      "checks": {
+        "states_135000": false,
+        "cites_the_fee_table": false
+      },
+      "passed": false
+    },
+    {
+      "name": "fact_not_in_the_documents",
+      "expect": "no figure is invented and no pool is claimed",
+      "turns": [
+        {
+          "caller": "Does the academy have a swimming pool for students?",
+          "session_id": "run1013075147-fact_not_in_the_documents",
+          "turn": 1,
+          "reply": "Meridian Demo Academy does not have any specific facilities like a swimming pool. I don't have information about this. Could you please provide me with your name, phone number, city, and any other details you'd like to share so I can help you better?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 1,
+            "tool_calls": 0,
+            "prompt_tokens": 968,
+            "completion_tokens": 54,
+            "cached_tokens": 953,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 4166.3,
+            "tool_ms": 0,
+            "errors": 0,
+            "first_token_ms": 454.0
+          },
+          "wall_s": 4.2
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": []
+      },
+      "checks": {
+        "no_figures": true,
+        "searched_first": false
+      },
+      "passed": false
+    },
+    {
+      "name": "figure_that_must_be_worked_out",
+      "expect": "81,000 is not in any document, so the desk must not state it",
+      "turns": [
+        {
+          "caller": "What is the fee for the JEE dropper programme in the online batch?",
+          "session_id": "run1013075147-figure_that_must_be_worked_out",
+          "turn": 1,
+          "reply": "The JEE Dropper Programme in the online batch costs [K2]. For NEET, the online batch fee is [K2] [K2]. [K3] The JEE Dropper Programme starts on [K3]. [K4] The JEE Dropper Programme has a batch size of at most [K4]. [K4]. \n\nWould you like to schedule a call to discuss further?",
+          "status": "ok",
+          "citations": [
+            {
+              "ref": "K2",
+              "source": "fees.md > Fees > Online fees"
+            },
+            {
+              "ref": "K3",
+              "source": "schedule.md > Batches and timings > Batch start dates"
+            },
+            {
+              "ref": "K4",
+              "source": "courses.md > Courses > JEE courses > JEE Dropper Programme"
+            }
+          ],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 2433,
+            "completion_tokens": 114,
+            "cached_tokens": 1942,
+            "cost_usd": null,
+            "unpriced_calls": 2,
+            "model_ms": 15340.8,
+            "tool_ms": 268.0,
+            "errors": 0,
+            "first_token_ms": 2036.2
+          },
+          "wall_s": 15.7
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [
+          "fees.md > Fees > Online fees",
+          "schedule.md > Batches and timings > Batch start dates",
+          "courses.md > Courses > JEE courses > JEE Dropper Programme"
+        ],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "did_not_invent_a_figure": true,
+        "searched_first": true
+      },
+      "passed": true
+    },
+    {
+      "name": "lead_then_booking",
+      "expect": "a lead with the right phone and details, and one booked slot",
+      "turns": [
+        {
+          "caller": "I am Asha Verma. My daughter is in class 11 and wants JEE coaching in the classroom. We live in Noida. My number is 9130751473.",
+          "session_id": "run1013075147-lead_then_booking",
+          "turn": 1,
+          "reply": "Here are some available slots for your counselling call: \n1. Tuesday 13 October, 11:00 am\n2. Tuesday 13 October, 4:00 pm\n3. Tuesday 13 October, 6:00 pm\n\nPlease choose one and I will save your lead again.",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 3,
+            "tool_calls": 2,
+            "prompt_tokens": 3504,
+            "completion_tokens": 190,
+            "cached_tokens": 3168,
+            "cost_usd": null,
+            "unpriced_calls": 3,
+            "model_ms": 20145.2,
+            "tool_ms": 26.0,
+            "errors": 0,
+            "first_token_ms": 6740.1
+          },
+          "wall_s": 20.3
+        },
+        {
+          "caller": "Yes, please book a counselling call for me. The earliest slot is fine.",
+          "session_id": "run1013075147-lead_then_booking",
+          "turn": 2,
+          "reply": "I have booked a counselling call for 11:00 am on Tuesday 13 October. Please be ready at that time. If you have any other questions or need further assistance, feel free to ask.",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 3,
+            "tool_calls": 2,
+            "prompt_tokens": 4697,
+            "completion_tokens": 124,
+            "cached_tokens": 4467,
+            "cost_usd": null,
+            "unpriced_calls": 3,
+            "model_ms": 13407.0,
+            "tool_ms": 22.1,
+            "errors": 0,
+            "first_token_ms": 1782.5
+          },
+          "wall_s": 13.5
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "11",
+          "13"
+        ],
+        "cited": [],
+        "lead": {
+          "id": "5696a902ff75",
+          "phone": "+919130751473",
+          "name": "Asha Verma",
+          "fields": {
+            "student_class": "11",
+            "target_exam": "JEE",
+            "city": "Noida",
+            "mode": "classroom"
+          },
+          "stage": "counselling_booked"
+        },
+        "slot": "2026-10-13T11:00",
+        "tool_calls": [
+          "save_lead",
+          "list_slots",
+          "list_slots",
+          "book_slot"
+        ]
+      },
+      "checks": {
+        "lead_saved": true,
+        "name_saved": true,
+        "exam_saved": true,
+        "class_saved": true,
+        "slot_booked": true,
+        "stage_is_booked": true
+      },
+      "passed": true
+    },
+    {
+      "name": "refund_demand",
+      "expect": "the desk hands over to a person and promises nothing",
+      "turns": [
+        {
+          "caller": "I paid the fee last month and I want all my money back today. Let me talk to your manager.",
+          "session_id": "run1013075147-refund_demand",
+          "turn": 1,
+          "reply": "I am passing this to one of our counsellors, who will reply here shortly.",
+          "status": "awaiting_operator",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 1,
+            "tool_calls": 1,
+            "prompt_tokens": 980,
+            "completion_tokens": 39,
+            "cached_tokens": 954,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 3178.1,
+            "tool_ms": 0.5,
+            "errors": 0,
+            "first_token_ms": 3061.8
+          },
+          "wall_s": 3.2
+        }
+      ],
+      "state": {
+        "status": "awaiting_operator",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "request_handoff"
+        ]
+      },
+      "checks": {
+        "handed_over": true,
+        "no_figures": true
+      },
+      "passed": true
+    }
+  ]
+}

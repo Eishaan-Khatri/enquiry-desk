@@ -1,0 +1,65 @@
+# Questions for the retrieval evaluation, each with the section that answers it.
+#
+# Read this before quoting any number from it: the documents and these questions were written
+# by the same author, for a fictional institute. Real callers word things in ways an author
+# does not think of, so results here are an upper bound. Replace the set with questions from
+# real enquiries once there is a pilot.
+#
+# kind:
+#   plain     uses the document's own words
+#   indirect  asks the same thing without the document's key words
+#   hinglish  Hindi in Roman script, as people type it
+#
+# The agent is told to write its search queries in English. The hinglish rows therefore show
+# what happens if it does not.
+
+- {kind: plain, q: "What is the fee for the JEE two-year classroom programme?", sources: ["fees.md > Fees > Classroom fees"]}
+- {kind: plain, q: "How much is the registration fee?", sources: ["fees.md > Fees > Registration fee"]}
+- {kind: plain, q: "Can the fee be paid in instalments?", sources: ["fees.md > Fees > Instalments"]}
+- {kind: plain, q: "When does the scholarship test take place?", sources: ["admission.md > Admission > Meridian Scholarship Test"]}
+- {kind: plain, q: "What scholarship do I get for scoring 85%?", sources: ["admission.md > Admission > Scholarship slabs"]}
+- {kind: plain, q: "What documents are needed for admission?", sources: ["admission.md > Admission > Documents needed"]}
+- {kind: plain, q: "What is the refund policy?", sources: ["policies.md > Policies > Refunds"]}
+- {kind: plain, q: "What are the class timings for dropper batches?", sources: ["schedule.md > Batches and timings > Class timings"]}
+- {kind: plain, q: "When does the early batch start?", sources: ["schedule.md > Batches and timings > Batch start dates"]}
+- {kind: plain, q: "Is there a hostel?", sources: ["facilities.md > Centre and facilities > Hostel"]}
+- {kind: plain, q: "Where is the centre?", sources: ["facilities.md > Centre and facilities > Location"]}
+- {kind: plain, q: "How many students are in a JEE Foundation batch?", sources: ["courses.md > Courses > JEE courses > JEE Foundation"]}
+- {kind: plain, q: "How long are recordings available for online students?", sources: ["courses.md > Courses > Online mode", "policies.md > Policies > Missed classes"]}
+- {kind: plain, q: "When are doubt sessions held?", sources: ["policies.md > Policies > Doubt sessions"]}
+- {kind: plain, q: "What are the library hours?", sources: ["facilities.md > Centre and facilities > Library"]}
+
+- {kind: indirect, q: "My daughter just finished her 12th boards and wants to try for engineering again next year. Which course is for her?", sources: ["courses.md > Courses > JEE courses > JEE Dropper Programme"]}
+- {kind: indirect, q: "We live in Jaipur. Can my son still study with you?", sources: ["facilities.md > Centre and facilities > Location", "courses.md > Courses > Online mode"]}
+- {kind: indirect, q: "Does the price cover books and mock exams?", sources: ["fees.md > Fees > What the fee includes"]}
+- {kind: indirect, q: "Is it cheaper if I pay everything upfront?", sources: ["fees.md > Fees > Instalments"]}
+- {kind: indirect, q: "Can he try a class before we pay anything?", sources: ["admission.md > Admission > Demo classes"]}
+- {kind: indirect, q: "He was sick last week and could not come. How does he catch up?", sources: ["policies.md > Policies > Missed classes"]}
+- {kind: indirect, q: "Do you send a bus to pick up children?", sources: ["facilities.md > Centre and facilities > Transport"]}
+- {kind: indirect, q: "Who decides whether I get my money back?", sources: ["policies.md > Policies > Refunds"]}
+- {kind: indirect, q: "I want to switch from attending in person to studying from home midway.", sources: ["policies.md > Policies > Changing batch or mode"]}
+- {kind: indirect, q: "Do you prepare students for CUET?", sources: ["courses.md > Courses > What we do not offer"]}
+- {kind: indirect, q: "How will I know if my child skips class?", sources: ["policies.md > Policies > Attendance"]}
+- {kind: indirect, q: "Is the institute shut during Diwali?", sources: ["schedule.md > Batches and timings > Holidays"]}
+- {kind: indirect, q: "How often are exams conducted and when do we see the marks?", sources: ["schedule.md > Batches and timings > Tests"]}
+- {kind: indirect, q: "Can I get the physics sir's mobile number?", sources: ["facilities.md > Centre and facilities > Teachers"]}
+- {kind: indirect, q: "My son is in ninth standard. Is there anything for him?", sources: ["courses.md > Courses > JEE courses > JEE Foundation"]}
+- {kind: indirect, q: "What time does the front office shut?", sources: ["schedule.md > Batches and timings > Centre hours"]}
+- {kind: indirect, q: "Does the fee waiver carry on into the next year?", sources: ["admission.md > Admission > Scholarship slabs"]}
+- {kind: indirect, q: "Do we have to pay to sit the paper that decides the fee waiver?", sources: ["admission.md > Admission > Meridian Scholarship Test"]}
+- {kind: indirect, q: "How do I enrol my child?", sources: ["admission.md > Admission > How to join"]}
+- {kind: indirect, q: "He wants to become a doctor and is starting eleventh.", sources: ["courses.md > Courses > NEET courses > NEET Two-Year Programme"]}
+
+- {kind: hinglish, q: "JEE dropper batch ki fees kitni hai?", sources: ["fees.md > Fees > Classroom fees"]}
+- {kind: hinglish, q: "kya fees kisto mein de sakte hain?", sources: ["fees.md > Fees > Instalments"]}
+- {kind: hinglish, q: "refund milega kya agar bachcha chhod de?", sources: ["policies.md > Policies > Refunds"]}
+- {kind: hinglish, q: "hostel ki suvidha hai kya?", sources: ["facilities.md > Centre and facilities > Hostel"]}
+- {kind: hinglish, q: "scholarship test kab hai?", sources: ["admission.md > Admission > Meridian Scholarship Test"]}
+- {kind: hinglish, q: "online class ki recording kitne din tak milti hai?", sources: ["courses.md > Courses > Online mode", "policies.md > Policies > Missed classes"]}
+- {kind: hinglish, q: "11th ke bachchon ki class ka time kya hai?", sources: ["schedule.md > Batches and timings > Class timings"]}
+- {kind: hinglish, q: "centre kahan par hai, metro se kitna door?", sources: ["facilities.md > Centre and facilities > Location"]}
+- {kind: hinglish, q: "admission ke liye kaun se documents chahiye?", sources: ["admission.md > Admission > Documents needed"]}
+- {kind: hinglish, q: "bina paise diye demo class mil sakti hai kya?", sources: ["admission.md > Admission > Demo classes"]}
+- {kind: hinglish, q: "bachcha class miss kare to parents ko pata chalega?", sources: ["policies.md > Policies > Attendance"]}
+- {kind: hinglish, q: "naya batch kab se shuru hoga?", sources: ["schedule.md > Batches and timings > Batch start dates"]}
+- {kind: hinglish, q: "kya aap NEET dropper ko padhate ho?", sources: ["courses.md > Courses > NEET courses > NEET Dropper Programme"]}

@@ -1,0 +1,11 @@
+.env
+.venv/
+var/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.claude/
+finetune/data/*.jsonl
+docs/PROJECT_PLAN.md
+docs/STUDY_GUIDE.md

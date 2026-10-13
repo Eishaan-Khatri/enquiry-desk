@@ -1,0 +1,15 @@
+# A fictional coaching institute. It does not exist. Every file under kb/ was written for this
+# project so the desk has something to answer from. Replace this folder with a real business's
+# documents for a pilot.
+id: demo_coaching
+business_name: Meridian Demo Academy
+callers: parents and students who are asking about coaching for JEE and NEET
+lead_fields:
+  student_class: the class the student is in now (9, 10, 11, 12, or "dropper" if they have passed class 12)
+  target_exam: JEE or NEET
+  city: the city the family lives in
+  mode: classroom or online
+slot_hours: ["11:00", "16:00", "18:00"]
+closed_weekdays: [6]
+handoff_line: I am passing this to one of our counsellors, who will reply here shortly.
+never_promise: a rank, a selection, a discount or a refund

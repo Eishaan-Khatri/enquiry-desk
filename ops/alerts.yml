@@ -1,0 +1,83 @@
+# Alert rules. Each one has an entry in docs/RUNBOOK.md saying what to check first.
+#
+# How to read a rule:
+#   expr   the condition, in PromQL
+#   for    how long it must stay true before the alert fires. This stops one bad minute paging anyone
+#
+# rate(x[5m]) is "per second, averaged over the last five minutes". Counters only ever go up,
+# so the rate is what tells you what is happening now.
+groups:
+  - name: desk
+    rules:
+      - alert: DeskDown
+        expr: up{job="desk"} == 0
+        for: 2m
+        labels: {severity: page}
+        annotations:
+          summary: The desk is not answering Prometheus. Callers are probably getting errors.
+
+      - alert: DeskSlowTurns
+        # The 95th percentile of turn time, computed from the histogram buckets.
+        expr: histogram_quantile(0.95, sum by (le) (rate(desk_turn_seconds_bucket[10m]))) > 8
+        for: 10m
+        labels: {severity: page}
+        annotations:
+          summary: 'One turn in twenty takes over 8 seconds (now {{ $value | printf "%.1f" }} s).'
+
+      - alert: DeskModelErrors
+        expr: |
+          sum(rate(desk_llm_calls_total{outcome="error"}[5m]))
+            / sum(rate(desk_llm_calls_total[5m])) > 0.05
+        for: 5m
+        labels: {severity: page}
+        annotations:
+          summary: More than 5% of model calls are failing.
+
+      - alert: DeskToolErrors
+        # Only failures of the tool itself. A caller who mistypes a phone number is not an outage.
+        expr: |
+          sum by (tool) (rate(desk_tool_calls_total{outcome="internal_error"}[10m]))
+            / sum by (tool) (rate(desk_tool_calls_total[10m])) > 0.2
+        for: 10m
+        labels: {severity: page}
+        annotations:
+          summary: 'The tool {{ $labels.tool }} is crashing on more than 20% of calls.'
+
+      - alert: DeskRefusalSpike
+        # The signal that is specific to an LLM system. The code has not changed, yet the desk
+        # refuses more: the model behind the API changed, or the documents did, or callers
+        # started asking about something the documents do not cover.
+        expr: |
+          sum(rate(desk_turns_total{outcome="refused"}[1h])) / sum(rate(desk_turns_total[1h])) > 0.15
+          and
+          sum(rate(desk_turns_total{outcome="refused"}[1h])) / sum(rate(desk_turns_total[1h]))
+            > 2 * (sum(rate(desk_turns_total{outcome="refused"}[1h] offset 1d)) / sum(rate(desk_turns_total[1h] offset 1d)))
+        for: 30m
+        labels: {severity: ticket}
+        annotations:
+          summary: The desk is refusing more than 15% of turns, and twice yesterday's rate.
+
+      - alert: DeskDeadJobs
+        expr: desk_jobs{status="dead"} > 0
+        labels: {severity: ticket}
+        annotations:
+          summary: '{{ $value }} job(s) gave up after five attempts. A lead may not be in the CRM.'
+
+      - alert: DeskQueueBacklog
+        expr: desk_jobs{status="queued"} > 50
+        for: 10m
+        labels: {severity: ticket}
+        annotations:
+          summary: Jobs are arriving faster than the worker handles them.
+
+      - alert: DeskSpendToday
+        expr: sum(increase(desk_llm_cost_usd_total[24h])) > 5
+        labels: {severity: ticket}
+        annotations:
+          summary: 'Model spend in the last 24 hours is ${{ $value | printf "%.2f" }}, over the $5 budget.'
+
+      - alert: DeskWebhookForgery
+        expr: sum(increase(desk_webhooks_total{outcome="refused"}[15m])) > 20
+        labels: {severity: ticket}
+        annotations:
+          summary: Many webhooks with bad signatures. Someone is guessing, or a secret was rotated on one side only.

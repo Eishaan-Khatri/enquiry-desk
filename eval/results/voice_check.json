@@ -1,0 +1,214 @@
+{
+ "stt_model": "base",
+ "note": "Synthetic caller audio. Error rates are a floor.",
+ "model_delay_s": 0.4,
+ "results": [
+  {
+   "label": "English, synthetic voice",
+   "summary": {
+    "sentences": 8,
+    "turn_detected": 8,
+    "mean_wer": 0.191,
+    "median_stt_ms": 1664,
+    "median_first_audio_ms": 2276,
+    "median_tts_ms": 216
+   },
+   "rows": [
+    {
+     "said": "What is the fee for the JEE dropper classroom batch?",
+     "heard": "What is the fee for the GE DROPER CLASS RUMBETCH?",
+     "wer": 0.4,
+     "audio_in_s": 3.6,
+     "stt_ms": 2019.8,
+     "audio_out_s": 5.4,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2419.0,
+     "first_audio_ms": 2633.9,
+     "total_ms": 2779.3
+    },
+    {
+     "said": "When is the scholarship test held?",
+     "heard": "When is the scholarship test held?",
+     "wer": 0.0,
+     "audio_in_s": 2.5,
+     "stt_ms": 1751.7,
+     "audio_out_s": 5.3,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2155.8,
+     "first_audio_ms": 2384.2,
+     "total_ms": 2505.3
+    },
+    {
+     "said": "My daughter is in class eleven and wants to prepare for NEET.",
+     "heard": "My daughter is in class 11 and wants to prepare for need.",
+     "wer": 0.167,
+     "audio_in_s": 3.6,
+     "stt_ms": 1631.5,
+     "audio_out_s": 5.3,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2035.8,
+     "first_audio_ms": 2237.7,
+     "total_ms": 2353.7
+    },
+    {
+     "said": "Do you have a hostel for students from outside Noida?",
+     "heard": "Do you have a hostel for students from outside Noida?",
+     "wer": 0.0,
+     "audio_in_s": 3.3,
+     "stt_ms": 1696.1,
+     "audio_out_s": 5.4,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2096.6,
+     "first_audio_ms": 2315.1,
+     "total_ms": 2441.5
+    },
+    {
+     "said": "I want to book a counselling call for tomorrow evening.",
+     "heard": "I want to book a counselling call for tomorrow evening.",
+     "wer": 0.0,
+     "audio_in_s": 3.4,
+     "stt_ms": 1632.9,
+     "audio_out_s": 5.3,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2033.9,
+     "first_audio_ms": 2229.5,
+     "total_ms": 2329.2
+    },
+    {
+     "said": "My phone number is nine eight seven six five four three two one zero.",
+     "heard": "My phone number is 987543210.",
+     "wer": 0.714,
+     "audio_in_s": 4.3,
+     "stt_ms": 1555.8,
+     "audio_out_s": 5.4,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 1957.2,
+     "first_audio_ms": 2175.1,
+     "total_ms": 2300.4
+    },
+    {
+     "said": "Can the fee be paid in instalments?",
+     "heard": "Can the fee be paid in installments?",
+     "wer": 0.143,
+     "audio_in_s": 2.5,
+     "stt_ms": 1589.6,
+     "audio_out_s": 5.2,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2001.0,
+     "first_audio_ms": 2171.0,
+     "total_ms": 2269.2
+    },
+    {
+     "said": "I want to talk to a counsellor, not a machine.",
+     "heard": "I want to talk to a counselor, not a machine.",
+     "wer": 0.1,
+     "audio_in_s": 3.2,
+     "stt_ms": 1712.8,
+     "audio_out_s": 5.4,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2125.8,
+     "first_audio_ms": 2373.1,
+     "total_ms": 2508.4
+    }
+   ]
+  },
+  {
+   "label": "Hindi, language detected by the model",
+   "summary": {
+    "sentences": 3,
+    "turn_detected": 3,
+    "mean_wer": 1.0,
+    "median_stt_ms": 1708,
+    "median_first_audio_ms": 2330,
+    "median_tts_ms": 167
+   },
+   "rows": [
+    {
+     "said": "मुझे फीस के बारे में जानकारी चाहिए",
+     "heard": "مجھے بھیس کے بارے میں جانکاری چاہیے",
+     "wer": 1.0,
+     "audio_in_s": 3.0,
+     "stt_ms": 2079.8,
+     "audio_out_s": 5.2,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2481.3,
+     "first_audio_ms": 2648.6,
+     "total_ms": 2750.0
+    },
+    {
+     "said": "क्या आपके यहाँ हॉस्टल की सुविधा है",
+     "heard": "کیا آپ کے یہاں хостر کی سویدھا ہے?",
+     "wer": 1.0,
+     "audio_in_s": 2.9,
+     "stt_ms": 1695.2,
+     "audio_out_s": 5.3,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2102.2,
+     "first_audio_ms": 2330.0,
+     "total_ms": 2465.7
+    },
+    {
+     "said": "नया बैच कब से शुरू होगा",
+     "heard": "νیابچ کبھ سیشر ہوگا.",
+     "wer": 1.0,
+     "audio_in_s": 2.6,
+     "stt_ms": 1707.6,
+     "audio_out_s": 5.2,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 2122.5,
+     "first_audio_ms": 2289.0,
+     "total_ms": 2390.5
+    }
+   ]
+  },
+  {
+   "label": "Hindi, language pinned to hi",
+   "summary": {
+    "sentences": 3,
+    "turn_detected": 3,
+    "mean_wer": 1.0,
+    "median_stt_ms": 1062,
+    "median_first_audio_ms": 1690,
+    "median_tts_ms": 229
+   },
+   "rows": [
+    {
+     "said": "मुझे फीस के बारे में जानकारी चाहिए",
+     "heard": "مجھے بھیس کے بارے میں جانکاری چاہیے.",
+     "wer": 1.0,
+     "audio_in_s": 3.0,
+     "stt_ms": 1197.3,
+     "audio_out_s": 5.5,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 1600.5,
+     "first_audio_ms": 1829.8,
+     "total_ms": 1969.6
+    },
+    {
+     "said": "क्या आपके यहाँ हॉस्टल की सुविधा है",
+     "heard": "کیا آپ کے یہاں хостل کی سوضہ ہے",
+     "wer": 1.0,
+     "audio_in_s": 2.8,
+     "stt_ms": 1005.1,
+     "audio_out_s": 5.4,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 1413.0,
+     "first_audio_ms": 1642.2,
+     "total_ms": 1773.1
+    },
+    {
+     "said": "नया बैच कब से शुरू होगा",
+     "heard": "νیا بچ قبسی شروع ہوگا.",
+     "wer": 1.0,
+     "audio_in_s": 2.5,
+     "stt_ms": 1062.1,
+     "audio_out_s": 5.3,
+     "endpoint_silence_ms": 700.0,
+     "first_sentence_ms": 1464.0,
+     "first_audio_ms": 1689.7,
+     "total_ms": 1821.2
+    }
+   ]
+  }
+ ]
+}

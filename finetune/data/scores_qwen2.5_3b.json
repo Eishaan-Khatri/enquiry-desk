@@ -1,0 +1,1059 @@
+{
+ "summary": {
+  "examples": 60,
+  "valid": {
+   "rate": 1.0,
+   "n": 60,
+   "interval_95": [
+    1.0,
+    1.0
+   ]
+  },
+  "right_tools": {
+   "rate": 0.9833,
+   "n": 60,
+   "interval_95": [
+    0.95,
+    1.0
+   ]
+  },
+  "exact": {
+   "rate": 0.6833,
+   "n": 60,
+   "interval_95": [
+    0.5667,
+    0.8
+   ]
+  },
+  "restraint": {
+   "rate": 1.0,
+   "n": 9,
+   "interval_95": [
+    1.0,
+    1.0
+   ]
+  },
+  "model": "qwen2.5:3b",
+  "data": "finetune\\data\\desk_test.generated.jsonl",
+  "seconds": 222.7,
+  "whole_file": true
+ },
+ "rows": [
+  {
+   "query": "The open slots are 2026-10-26T16:00 and 2026-10-26T09:00. The caller says: please book the 16:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-26T16:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-26T16:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Neha Gupta. My child is in class 10 and wants JEE coaching, online. We live in Patna. My number is 9647593824.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9647593824",
+      "name": "Neha Gupta",
+      "student_class": "10",
+      "target_exam": "JEE",
+      "city": "Patna",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9647593824\", \"name\": \"Neha Gupta\", \"student_class\": \"10\", \"target_exam\": \"JEE\", \"city\": \"Patna\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "That is all, bye",
+   "gold": [],
+   "output": "OK, I am ready to assist you further if you need anything. Please let me know how I can help you.",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "Thank you so much",
+   "gold": [],
+   "output": "You're welcome! How may I assist you further?",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "When can I speak to a counsellor?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Rohit Mehra. My child is in class 12 and wants NEET coaching, classroom. We live in Patna. My number is 9815659387.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9815659387",
+      "name": "Rohit Mehra",
+      "student_class": "12",
+      "target_exam": "NEET",
+      "city": "Patna",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9815659387\", \"name\": \"Rohit Mehra\", \"student_class\": \"12\", \"target_exam\": \"NEET\", \"city\": \"Patna\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "Hello",
+   "gold": [],
+   "output": "Hello! How can I assist you today? Whether you need information about courses, fees, or just need to schedule a counselling call, I'm here to help. What would you like to know or do?",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "I am Kavita Joshi. My child is in class 10 and wants JEE coaching, online. We live in Noida. My number is 9975351393.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9975351393",
+      "name": "Kavita Joshi",
+      "student_class": "10",
+      "target_exam": "JEE",
+      "city": "Noida",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9975351393\", \"name\": \"Kavita Joshi\", \"student_class\": \"10\", \"target_exam\": \"JEE\", \"city\": \"Noida\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Imran Khan. My child is in class 10 and wants NEET coaching, online. We live in Ghaziabad. My number is 9871484185.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9871484185",
+      "name": "Imran Khan",
+      "student_class": "10",
+      "target_exam": "NEET",
+      "city": "Ghaziabad",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9871484185\", \"name\": \"Imran Khan\", \"student_class\": \"10\", \"target_exam\": \"NEET\", \"city\": \"Ghaziabad\", \"mode\": \"online\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Kavita Joshi. My child is in class 12 and wants JEE coaching, classroom. We live in Ghaziabad. My number is 9934232094.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9934232094",
+      "name": "Kavita Joshi",
+      "student_class": "12",
+      "target_exam": "JEE",
+      "city": "Ghaziabad",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9934232094\", \"name\": \"Kavita Joshi\", \"student_class\": \"12\", \"target_exam\": \"JEE\", \"city\": \"Ghaziabad\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Sunita Rao. My child is in class 12 and wants NEET coaching, online. We live in Noida. My number is 9186848339.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9186848339",
+      "name": "Sunita Rao",
+      "student_class": "12",
+      "target_exam": "NEET",
+      "city": "Noida",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9186848339\", \"name\": \"Sunita Rao\", \"student_class\": \"12\", \"target_exam\": \"NEET\", \"city\": \"Noida\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-24T18:00 and 2026-10-24T09:00. The caller says: please book the 18:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-24T18:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-24T18:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "When can I speak to a counsellor?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I would like to book a call. What times are free?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Pooja Sharma. My child is in class 12 and wants JEE coaching, classroom. We live in Ghaziabad. My number is 9330413525.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9330413525",
+      "name": "Pooja Sharma",
+      "student_class": "12",
+      "target_exam": "JEE",
+      "city": "Ghaziabad",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9330413525\", \"name\": \"Pooja Sharma\", \"student_class\": \"12\", \"target_exam\": \"JEE\", \"city\": \"Ghaziabad\", \"mode\": \"classroom\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Vikram Singh. My child is in class 9 and wants NEET coaching, classroom. We live in Noida. My number is 9989101399.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9989101399",
+      "name": "Vikram Singh",
+      "student_class": "9",
+      "target_exam": "NEET",
+      "city": "Noida",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": false,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "When can I speak to a counsellor?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Asha Verma. My child is in class 9 and wants NEET coaching, classroom. We live in Agra. My number is 9217300869.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9217300869",
+      "name": "Asha Verma",
+      "student_class": "9",
+      "target_exam": "NEET",
+      "city": "Agra",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9217300869\", \"name\": \"Asha Verma\", \"student_class\": \"9\", \"target_exam\": \"NEET\", \"city\": \"Agra\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Imran Khan. My child is in class 12 and wants JEE coaching, online. We live in Meerut. My number is 9562087091.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9562087091",
+      "name": "Imran Khan",
+      "student_class": "12",
+      "target_exam": "JEE",
+      "city": "Meerut",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9562087091\", \"name\": \"Imran Khan\", \"student_class\": \"12\", \"target_exam\": \"JEE\", \"city\": \"Meerut\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I would like to book a call. What times are free?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\"}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-27T18:00 and 2026-10-27T09:00. The caller says: please book the 18:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-27T18:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-27T18:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Vikram Singh. My child is in class 9 and wants NEET coaching, online. We live in Noida. My number is 9225841972.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9225841972",
+      "name": "Vikram Singh",
+      "student_class": "9",
+      "target_exam": "NEET",
+      "city": "Noida",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9225841972\", \"name\": \"Vikram Singh\", \"student_class\": \"9\", \"target_exam\": \"NEET\", \"city\": \"Noida\", \"mode\": \"online\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "Good morning",
+   "gold": [],
+   "output": "Good morning! How can I assist you today?",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "I would like to book a call. What times are free?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "What slots do you have for a counselling call?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "When can I speak to a counsellor?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "That is all, bye",
+   "gold": [],
+   "output": "OK, I am ready to assist you further if you need anything. Please let me know how I can help you.",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "I am Pooja Sharma. My child is in class 11 and wants NEET coaching, classroom. We live in Delhi. My number is 9508423759.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9508423759",
+      "name": "Pooja Sharma",
+      "student_class": "11",
+      "target_exam": "NEET",
+      "city": "Delhi",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9508423759\", \"name\": \"Pooja Sharma\", \"student_class\": \"11\", \"target_exam\": \"NEET\", \"city\": \"Delhi\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "What slots do you have for a counselling call?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-27T18:00 and 2026-10-27T09:00. The caller says: please book the 18:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-27T18:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-27T18:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Asha Verma. My child is in class 12 and wants NEET coaching, classroom. We live in Agra. My number is 9523376960.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9523376960",
+      "name": "Asha Verma",
+      "student_class": "12",
+      "target_exam": "NEET",
+      "city": "Agra",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9523376960\", \"name\": \"Asha Verma\", \"student_class\": \"12\", \"target_exam\": \"NEET\", \"city\": \"Agra\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Pooja Sharma. My child is in class 12 and wants NEET coaching, online. We live in Delhi. My number is 9427878900.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9427878900",
+      "name": "Pooja Sharma",
+      "student_class": "12",
+      "target_exam": "NEET",
+      "city": "Delhi",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9427878900\", \"name\": \"Pooja Sharma\", \"student_class\": \"12\", \"target_exam\": \"NEET\", \"city\": \"Delhi\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-14T16:00 and 2026-10-14T09:00. The caller says: please book the 16:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-14T16:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-14T16:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Imran Khan. My child is in class 9 and wants JEE coaching, classroom. We live in Lucknow. My number is 9066503008.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9066503008",
+      "name": "Imran Khan",
+      "student_class": "9",
+      "target_exam": "JEE",
+      "city": "Lucknow",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9066503008\", \"name\": \"Imran Khan\", \"student_class\": \"9\", \"target_exam\": \"JEE\", \"city\": \"Lucknow\", \"mode\": \"classroom\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "That is all, bye",
+   "gold": [],
+   "output": "OK, I am ready to assist you further if you need anything. Please let me know how I can help you.",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "I am Neha Gupta. My child is in class 11 and wants JEE coaching, online. We live in Meerut. My number is 9217610471.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9217610471",
+      "name": "Neha Gupta",
+      "student_class": "11",
+      "target_exam": "JEE",
+      "city": "Meerut",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9217610471\", \"name\": \"Neha Gupta\", \"student_class\": \"11\", \"target_exam\": \"JEE\", \"city\": \"Meerut\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Sunita Rao. My child is in class 9 and wants NEET coaching, online. We live in Meerut. My number is 9000348559.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9000348559",
+      "name": "Sunita Rao",
+      "student_class": "9",
+      "target_exam": "NEET",
+      "city": "Meerut",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9000348559\", \"name\": \"Sunita Rao\", \"student_class\": \"9\", \"target_exam\": \"NEET\", \"city\": \"Meerut\", \"mode\": \"online\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-19T18:00 and 2026-10-19T09:00. The caller says: please book the 18:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-19T18:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-19T18:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Vikram Singh. My child is in class 9 and wants NEET coaching, classroom. We live in Jaipur. My number is 9940224555.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9940224555",
+      "name": "Vikram Singh",
+      "student_class": "9",
+      "target_exam": "NEET",
+      "city": "Jaipur",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9940224555\", \"name\": \"Vikram Singh\", \"student_class\": \"9\", \"target_exam\": \"NEET\", \"city\": \"Jaipur\", \"mode\": \"classroom\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Neha Gupta. My child is in class 12 and wants JEE coaching, classroom. We live in Lucknow. My number is 9294568241.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9294568241",
+      "name": "Neha Gupta",
+      "student_class": "12",
+      "target_exam": "JEE",
+      "city": "Lucknow",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9294568241\", \"name\": \"Neha Gupta\", \"student_class\": \"12\", \"target_exam\": \"JEE\", \"city\": \"Lucknow\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "When can I speak to a counsellor?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "That is all, bye",
+   "gold": [],
+   "output": "OK, I am ready to assist you further if you need anything. Please let me know how I can help you.",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "I am Neha Gupta. My child is in class 11 and wants JEE coaching, online. We live in Jaipur. My number is 9546118775.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9546118775",
+      "name": "Neha Gupta",
+      "student_class": "11",
+      "target_exam": "JEE",
+      "city": "Jaipur",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9546118775\", \"name\": \"Neha Gupta\", \"student_class\": \"11\", \"target_exam\": \"JEE\", \"city\": \"Jaipur\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Pooja Sharma. My child is in class 9 and wants JEE coaching, classroom. We live in Jaipur. My number is 9045229611.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9045229611",
+      "name": "Pooja Sharma",
+      "student_class": "9",
+      "target_exam": "JEE",
+      "city": "Jaipur",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9045229611\", \"name\": \"Pooja Sharma\", \"student_class\": \"9\", \"target_exam\": \"JEE\", \"city\": \"Jaipur\", \"mode\": \"classroom\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Kavita Joshi. My child is in class 12 and wants JEE coaching, online. We live in Noida. My number is 9168847793.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9168847793",
+      "name": "Kavita Joshi",
+      "student_class": "12",
+      "target_exam": "JEE",
+      "city": "Noida",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9168847793\", \"name\": \"Kavita Joshi\", \"student_class\": \"12\", \"target_exam\": \"JEE\", \"city\": \"Noida\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Neha Gupta. My child is in class 9 and wants NEET coaching, online. We live in Lucknow. My number is 9635110873.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9635110873",
+      "name": "Neha Gupta",
+      "student_class": "9",
+      "target_exam": "NEET",
+      "city": "Lucknow",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9635110873\", \"name\": \"Neha Gupta\", \"student_class\": \"9\", \"target_exam\": \"NEET\", \"city\": \"Lucknow\", \"mode\": \"online\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "When can I speak to a counsellor?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Vikram Singh. My child is in class 12 and wants JEE coaching, online. We live in Lucknow. My number is 9137658219.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9137658219",
+      "name": "Vikram Singh",
+      "student_class": "12",
+      "target_exam": "JEE",
+      "city": "Lucknow",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9137658219\", \"name\": \"Vikram Singh\", \"student_class\": \"12\", \"target_exam\": \"JEE\", \"city\": \"Lucknow\", \"mode\": \"online\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-28T18:00 and 2026-10-28T09:00. The caller says: please book the 18:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-28T18:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-28T18:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-24T16:00 and 2026-10-24T09:00. The caller says: please book the 16:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-24T16:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-24T16:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "The open slots are 2026-10-21T18:00 and 2026-10-21T09:00. The caller says: please book the 18:00 one.",
+   "gold": [
+    {
+     "name": "book_slot",
+     "arguments": {
+      "slot_id": "2026-10-21T18:00"
+     }
+    }
+   ],
+   "output": "{\"name\": \"book_slot\", \"arguments\": {\"slot_id\": \"2026-10-21T18:00\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Vikram Singh. My child is in class 12 and wants NEET coaching, online. We live in Noida. My number is 9555082492.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9555082492",
+      "name": "Vikram Singh",
+      "student_class": "12",
+      "target_exam": "NEET",
+      "city": "Noida",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9555082492\", \"name\": \"Vikram Singh\", \"student_class\": \"12\", \"target_exam\": \"NEET\", \"city\": \"Noida\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Imran Khan. My child is in class 10 and wants NEET coaching, online. We live in Noida. My number is 9132040752.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9132040752",
+      "name": "Imran Khan",
+      "student_class": "10",
+      "target_exam": "NEET",
+      "city": "Noida",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9132040752\", \"name\": \"Imran Khan\", \"student_class\": \"10\", \"target_exam\": \"NEET\", \"city\": \"Noida\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "Are you a real person?",
+   "gold": [],
+   "output": "Yes, I am here to assist you. How can I help you today?",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "Good morning",
+   "gold": [],
+   "output": "Good morning! How can I assist you today?",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": true
+  },
+  {
+   "query": "I am Imran Khan. My child is in class 10 and wants JEE coaching, classroom. We live in Delhi. My number is 9634896769.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9634896769",
+      "name": "Imran Khan",
+      "student_class": "10",
+      "target_exam": "JEE",
+      "city": "Delhi",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9634896769\", \"name\": \"Imran Khan\", \"student_class\": \"10\", \"target_exam\": \"JEE\", \"city\": \"Delhi\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  },
+  {
+   "query": "I am Neha Gupta. My child is in class 10 and wants JEE coaching, classroom. We live in Meerut. My number is 9517446660.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9517446660",
+      "name": "Neha Gupta",
+      "student_class": "10",
+      "target_exam": "JEE",
+      "city": "Meerut",
+      "mode": "classroom"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9517446660\", \"name\": \"Neha Gupta\", \"student_class\": \"10\", \"target_exam\": \"JEE\", \"city\": \"Meerut\", \"mode\": \"classroom\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I would like to book a call. What times are free?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\"}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "When can I speak to a counsellor?",
+   "gold": [
+    {
+     "name": "list_slots",
+     "arguments": {}
+    }
+   ],
+   "output": "{\"name\": \"list_slots\", \"arguments\": {}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": true,
+   "restraint": null
+  },
+  {
+   "query": "I am Pooja Sharma. My child is in class 12 and wants NEET coaching, online. We live in Jaipur. My number is 9279125609.",
+   "gold": [
+    {
+     "name": "save_lead",
+     "arguments": {
+      "phone": "9279125609",
+      "name": "Pooja Sharma",
+      "student_class": "12",
+      "target_exam": "NEET",
+      "city": "Jaipur",
+      "mode": "online"
+     }
+    }
+   ],
+   "output": "{\"name\": \"save_lead\", \"arguments\": {\"phone\": \"9279125609\", \"name\": \"Pooja Sharma\", \"student_class\": \"12\", \"target_exam\": \"NEET\", \"city\": \"Jaipur\", \"mode\": \"\"}}",
+   "valid": true,
+   "right_tools": true,
+   "exact": false,
+   "restraint": null
+  }
+ ]
+}

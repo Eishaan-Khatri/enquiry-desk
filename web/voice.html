@@ -1,0 +1,101 @@
+<!doctype html>
+<!--
+  A page to talk to the desk from a browser. Open http://localhost:8000/voice
+
+  NOT TESTED WITH A REAL MICROPHONE YET. The server side
+  it talks to is tested. Expect to adjust this page on first use.
+
+  What it does:
+    1. Asks for the microphone, with echo cancellation on. Without that the desk would hear
+       its own voice through the speakers and interrupt itself.
+    2. Captures audio at 16,000 samples a second and sends it over a WebSocket as 16-bit PCM.
+    3. Plays the audio the desk sends back, and stops at once when told to "clear".
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enquiry Desk voice</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+  button { font-size: 1.1rem; padding: .6rem 1.2rem; }
+  #log p { margin: .4rem 0; } .caller { color: #1a4d8f; } .desk { color: #222; } .note { color: #777; font-size: .85rem; }
+</style>
+</head>
+<body>
+<h1>Enquiry Desk</h1>
+<p><button id="toggle">Start call</button> <span id="state" class="note">not connected</span></p>
+<div id="log"></div>
+<script>
+const log = (cls, text) => { const p = document.createElement("p"); p.className = cls; p.textContent = text; document.getElementById("log").append(p); p.scrollIntoView(); };
+const state = (text) => document.getElementById("state").textContent = text;
+let socket, context, micStream, playAt = 0, playing = [], outRate = 22050;
+
+// Runs on the audio thread. Collects microphone samples and posts them 32 ms at a time.
+const worklet = `
+class Capture extends AudioWorkletProcessor {
+  constructor() { super(); this.buffer = []; }
+  process(inputs) {
+    const channel = inputs[0][0];
+    if (channel) { for (const s of channel) this.buffer.push(s); }
+    while (this.buffer.length >= 512) {
+      const frame = this.buffer.splice(0, 512), pcm = new Int16Array(512);
+      for (let i = 0; i < 512; i++) pcm[i] = Math.max(-1, Math.min(1, frame[i])) * 32767;
+      this.port.postMessage(pcm.buffer, [pcm.buffer]);
+    }
+    return true;
+  }
+}
+registerProcessor("capture", Capture);`;
+
+function play(buffer) {
+  const pcm = new Int16Array(buffer), audio = context.createBuffer(1, pcm.length, outRate), data = audio.getChannelData(0);
+  for (let i = 0; i < pcm.length; i++) data[i] = pcm[i] / 32768;
+  const source = context.createBufferSource();
+  source.buffer = audio; source.connect(context.destination);
+  playAt = Math.max(playAt, context.currentTime);   // queue each piece right after the one before
+  source.start(playAt); playAt += audio.duration;
+  playing.push(source); source.onended = () => playing = playing.filter(s => s !== source);
+}
+
+function clearPlayback() { for (const s of playing) { try { s.stop(); } catch {} } playing = []; playAt = 0; }
+
+async function start() {
+  micStream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 } });
+  context = new AudioContext({ sampleRate: 16000 });   // the browser resamples the microphone to this
+  await context.audioWorklet.addModule(URL.createObjectURL(new Blob([worklet], { type: "application/javascript" })));
+  const capture = new AudioWorkletNode(context, "capture");
+  context.createMediaStreamSource(micStream).connect(capture);
+
+  socket = new WebSocket(`${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws/voice`);
+  socket.binaryType = "arraybuffer";
+  socket.onopen = () => state("connected, loading speech models on first use");
+  socket.onclose = () => { state("call ended"); stop(); };
+  capture.port.onmessage = (event) => { if (socket.readyState === 1) socket.send(event.data); };
+  socket.onmessage = (event) => {
+    if (typeof event.data !== "string") return play(event.data);
+    const message = JSON.parse(event.data);
+    if (message.type === "ready") { outRate = message.rate; state("listening"); }
+    if (message.type === "heard" && message.text) log("caller", "You: " + message.text);
+    if (message.type === "reply") {
+      log("desk", "Desk: " + message.text);
+      const t = message.timings || {};
+      log("note", `first audio after ${Math.round(t.first_audio_ms || 0)} ms (speech to text ${Math.round(t.stt_ms || 0)} ms)` + (message.interrupted ? ", interrupted" : ""));
+    }
+    if (message.type === "clear") clearPlayback();
+  };
+  document.getElementById("toggle").textContent = "End call";
+}
+
+function stop() {
+  if (socket && socket.readyState <= 1) socket.close();
+  if (micStream) micStream.getTracks().forEach(t => t.stop());
+  if (context) context.close();
+  socket = context = micStream = null; clearPlayback();
+  document.getElementById("toggle").textContent = "Start call";
+}
+
+document.getElementById("toggle").onclick = () => socket ? stop() : start().catch(e => state("could not start: " + e.message));
+</script>
+</body>
+</html>
