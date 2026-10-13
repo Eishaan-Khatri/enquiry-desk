@@ -24,7 +24,7 @@ from enquiry_desk.config import get_settings
 from enquiry_desk.evals.runner import per_scenario, run_scenario, unique_phone
 from enquiry_desk.evals.scenarios import load_scenarios
 from enquiry_desk.evals.stats import summarise
-from enquiry_desk.llm.wire import ChatClient
+from enquiry_desk.llm.wire import ChatClient, LLMError
 from enquiry_desk.runtime import open_desk
 
 HERE = Path(__file__).parent
@@ -47,17 +47,27 @@ async def main() -> None:
         os.environ.get("DESK_EVAL_API_KEY", settings.llm_api_key),
         os.environ.get("DESK_EVAL_MODEL", settings.llm_model),
         timeout=settings.llm_timeout_s,
+        min_gap_s=settings.llm_min_gap_s,
+        max_retries=settings.llm_max_retries,
     )
     stamp = datetime.now().strftime("%m%d%H%M")
     results = []
+    skipped: list[str] = []
     counter = 0
     async with open_desk(settings) as runtime:
         for scenario in scenarios:
             for run in range(1, args.runs + 1):
                 counter += 1
-                result = await run_scenario(
-                    runtime, helper, scenario, run, unique_phone(counter), judge_chat=helper if args.judge else None
-                )
+                try:
+                    result = await run_scenario(
+                        runtime, helper, scenario, run, unique_phone(counter), judge_chat=helper if args.judge else None
+                    )
+                except LLMError as error:
+                    # The caller model failed, usually on a rate limit. That is not a result
+                    # about the desk, so the scenario is left out and reported as not run.
+                    print(f"SKIP  {scenario.id:34} run {run}  not run: {str(error)[:70]}", flush=True)
+                    skipped.append(scenario.id)
+                    continue
                 results.append(result)
                 failed = [name for name, ok in result.checks.items() if not ok]
                 print(
@@ -74,6 +84,8 @@ async def main() -> None:
     print(f"\nDesk model {settings.llm_model}, caller model {helper.model}")
     print(f"Pass rate {overall['pass_rate']:.0%}, 95% interval {overall['interval_95'][0]:.0%} to {overall['interval_95'][1]:.0%}, "
           f"over {overall['scenarios']} scenarios and {overall['runs']} runs.")
+    if skipped:
+        print(f"Not run: {len(skipped)} ({', '.join(skipped)})")
     if args.runs > 1:
         print(f"Passed every run: {overall['passed_every_run']} of {overall['scenarios']}. Passed no run: {overall['passed_no_run']}.")
     for category, items in sorted(by_category.items()):
@@ -89,7 +101,7 @@ async def main() -> None:
     out.write_text(
         json.dumps(
             {"desk_model": settings.llm_model, "caller_model": helper.model, "search_first": settings.always_search_first,
-             "runs_per_scenario": args.runs, "summary": overall, "results": [r.as_dict() for r in results]},
+             "runs_per_scenario": args.runs, "not_run": skipped, "summary": overall, "results": [r.as_dict() for r in results]},
             indent=1, ensure_ascii=False,
         ),
         encoding="utf-8",

@@ -4,7 +4,7 @@ An enquiry agent for a small business, over chat and voice. A caller asks about 
 
 I started this to learn the parts of LLM engineering I had only read about: tool calling on the wire, an agent graph with saved state, a vector database, webhooks, cost tracking, monitoring, a voice loop. So the repo is built to be read. Every module opens with a comment on why it exists, and most design choices are there because a test run broke the simpler version.
 
-> **Where it stands.** Every part is built and tested, and it does not yet do its job. On the two small local models I have run it with, it completed 0 to 2 of 5 scripted calls. I have not run it on a strong hosted model yet. The numbers are all below, including the bad ones.
+> **Where it stands.** On a small hosted model (`gemini-3.5-flash-lite`) the desk passed 39 of 40 simulated calls, one run each. On two small local models it passed 0 to 2 of 5. Voice works on synthetic audio and has not been tried by a person. The phone line, HubSpot and the fine-tune are written and not yet run for real. All the numbers are below, including the bad ones.
 
 The business in the demo, "Meridian Demo Academy", is made up. Its six documents were written for this project.
 
@@ -97,7 +97,7 @@ uv run python eval/loadtest.py --callers 20 --turns 4
 | Ten SQL reports with CTEs and window functions | [`sql/`](src/enquiry_desk/sql) | Yes, SQLite and PostgreSQL |
 | Signed webhooks, a retrying job queue, lead intake | [`webhooks/`](src/enquiry_desk/webhooks), [`jobs.py`](src/enquiry_desk/jobs.py), [`intake.py`](src/enquiry_desk/intake.py) | Yes |
 | HubSpot adapter | [`crm_hubspot.py`](src/enquiry_desk/crm_hubspot.py) | No, mocked responses only |
-| Scenario evaluation with a simulated caller | [`evals/`](src/enquiry_desk/evals), [`eval/`](eval) | On 8 of 40 scenarios |
+| Scenario evaluation with a simulated caller | [`evals/`](src/enquiry_desk/evals), [`eval/`](eval) | Yes, all 40 scenarios |
 | Metrics, traces, alert rules, dashboard, runbook | [`observability.py`](src/enquiry_desk/observability.py), [`ops/`](ops) | Yes |
 | Voice: turn detection, Whisper, Piper, interruption | [`voice/`](src/enquiry_desk/voice) | On synthetic audio |
 | Browser voice page | [`web/voice.html`](web/voice.html) | No, it loads and that is all I know |
@@ -105,7 +105,7 @@ uv run python eval/loadtest.py --callers 20 --turns 4
 | Fine-tuning: split by tool, leak check, scoring | [`finetune/`](finetune) | Scoring yes, training no |
 | Container image and PostgreSQL | [`Dockerfile`](Dockerfile), [`db.py`](src/enquiry_desk/db.py) | Yes |
 
-167 tests, and the same suite passes on SQLite and on PostgreSQL 17. The model is scripted in tests, so they need no network.
+168 tests, and the same suite passes on SQLite and on PostgreSQL 17. The model is scripted in tests, so they need no network.
 
 ## Results
 
@@ -113,7 +113,32 @@ Everything was measured on one laptop with no GPU, on 13 October 2026. Each numb
 
 ### Does it work?
 
-Five scripted calls, each judged on the end state.
+**On a hosted model, mostly yes.** 40 scenarios, with a second model playing the caller, each judged on the end state. `gemini-3.5-flash-lite` as both desk and caller, one run per scenario.
+
+| Kind of call | Passed |
+|---|---|
+| A fact that is in the documents | 4 of 4 |
+| A fact that is not in the documents | 3 of 4 |
+| A figure that would need arithmetic | 4 of 4 |
+| Booking a counselling call | 4 of 4 |
+| Phone number wrong, odd, or refused | 4 of 4 |
+| Refund, discount or waiver demand | 4 of 4 |
+| Asks for a person, or is angry | 4 of 4 |
+| Prompt injection | 4 of 4 |
+| Hindi in Roman script | 4 of 4 |
+| Off topic | 4 of 4 |
+| **All** | **39 of 40** (95% interval 92% to 100%) |
+
+Read that number with four cautions:
+
+- **One run each.** I have not measured how often a scenario passes three times out of three, which is the number a business would care about.
+- **I wrote the scenarios and the checks.** Reading the transcripts, one pass should have been a fail: asked about a canteen, the desk said "the academy does not have a canteen". The documents do not say that. My check for that scenario only looked for invented prices. So 38 of 40 is the fairer count, and both misses are the same fault: the model turns "the documents do not mention it" into "we do not have it".
+- **It leans on the handoff.** Three of the four injection attempts and two off-topic questions passed because the desk handed the caller to a person. That is safe, and in a real business it is also a cost.
+- **The caller is the same small model**, so it is not a hard opponent.
+
+It took 88 turns and about 308,000 tokens, close to 3,500 tokens a turn, nearly all of it input: the instructions, five tool schemas and the history are sent again on every call.
+
+**On small local models, no.** Five scripted calls, each judged on the end state.
 
 | Model | Setting | Passed |
 |---|---|---|
@@ -123,7 +148,7 @@ Five scripted calls, each judged on the end state.
 | `qwen2.5:7b` | default | 0 of 5 |
 | `qwen2.5:7b` | after two new guards | 0 of 5 |
 
-Not on these. Rewording the prompt made it worse, and forcing the search did not help. A hosted model is the next run.
+The same five scripts on `gemini-3.5-flash-lite`: 4 of 5. So the gap is the model, not the design. Rewording the prompt made the local model worse, and forcing the search did not help.
 
 The failures were more useful than a pass would have been:
 
@@ -133,6 +158,7 @@ The failures were more useful than a pass would have been:
 | Saved a lead four times under a phone number nobody gave | `save_lead` only accepts a number found in the caller's own words |
 | Said "I have booked your call" with nothing booked | A reply may say that only after the booking tool succeeded |
 | Never said it was an AI | The first reply gets that line in code |
+| (Gemini) Rejected every second request | It signs each tool call and wants the signature back. The client now returns whatever the server attaches to a call |
 | Quoted a real fee against the wrong course | **Open.** The figure exists in a source, so the check passes it |
 | Said "there is no swimming pool" when the documents say nothing either way | **Open.** A claim with no number in it is not checked |
 

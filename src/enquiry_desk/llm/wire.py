@@ -43,6 +43,9 @@ class ToolCall:
     id: str
     name: str
     arguments: str  # JSON text exactly as the model sent it. Nothing has validated it yet.
+    # Anything else the server attached to the call, sent back untouched. Gemini puts a
+    # "thought signature" here and rejects the next request if it is missing.
+    extra: dict | None = None
 
 
 @dataclass
@@ -73,6 +76,7 @@ class Completion:
                     "type": "function",
                     "function": {"name": call.name, "arguments": call.arguments},
                 }
+                | ({"extra_content": call.extra} if call.extra else {})
                 for call in self.tool_calls
             ]
         return message
@@ -81,7 +85,7 @@ class Completion:
 def tool_calls_of(message: dict) -> list[ToolCall]:
     """Read the tool calls back out of an assistant message in the history."""
     return [
-        ToolCall(id=c["id"], name=c["function"]["name"], arguments=c["function"]["arguments"])
+        ToolCall(id=c["id"], name=c["function"]["name"], arguments=c["function"]["arguments"], extra=c.get("extra_content"))
         for c in message.get("tool_calls") or []
     ]
 
@@ -134,6 +138,8 @@ class StreamAssembler:
         call.id = call.id or call_id or ""
         call.name = call.name or function.get("name") or ""
         call.arguments += function.get("arguments") or ""
+        if fragment.get("extra_content"):
+            call.extra = fragment["extra_content"]
 
     @property
     def started(self) -> bool:
@@ -180,8 +186,14 @@ class ChatClient:
         stream_usage: bool = True,
         max_retries: int = 2,
         timeout: float = 60.0,
+        min_gap_s: float = 0.0,
         sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
     ):
+        # The least time between the starts of two requests. A free tier allows a fixed number
+        # of requests a minute, and staying under it is cheaper than being refused and retrying.
+        self._min_gap_s = min_gap_s
+        self._next_start = 0.0
+        self._pace = asyncio.Lock()
         self.model = model
         self._url = base_url.rstrip("/") + "/chat/completions"
         self._headers = {"Authorization": f"Bearer {api_key}"}
@@ -218,6 +230,12 @@ class ChatClient:
 
         attempt = 1
         while True:
+            if self._min_gap_s:
+                async with self._pace:
+                    wait = self._next_start - time.monotonic()
+                    if wait > 0:
+                        await self._sleep(wait)
+                    self._next_start = time.monotonic() + self._min_gap_s
             try:
                 completion = await self._stream(payload, on_text)
                 completion.attempts = attempt
@@ -228,6 +246,8 @@ class ChatClient:
                     raise
                 # Exponential backoff with jitter, unless the server said how long to wait.
                 backoff = min(8.0, 0.5 * 2 ** (attempt - 1)) + random.uniform(0, 0.25)
+                if error.status == 429:
+                    backoff = 20.0 * attempt  # a rate limit is counted per minute, so a short wait is wasted
                 await self._sleep(error.retry_after if error.retry_after is not None else backoff)
                 attempt += 1
 

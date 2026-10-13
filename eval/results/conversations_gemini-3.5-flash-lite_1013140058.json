@@ -1,0 +1,270 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "server": "https://generativelanguage.googleapis.com/v1beta/openai",
+  "run": "1013140058",
+  "scenarios": [
+    {
+      "name": "fee_in_the_documents",
+      "expect": "the reply gives 1,35,000 and cites a source",
+      "turns": [
+        {
+          "caller": "Hello, what is the fee for the JEE dropper classroom batch?",
+          "session_id": "run1013140058-fee_in_the_documents",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. I am sorry, I am having trouble on my side right now. May I have a counsellor call you back?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 1023,
+            "completion_tokens": 20,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 2735.0,
+            "tool_ms": 116.4,
+            "errors": 1,
+            "first_token_ms": 1738.6
+          },
+          "wall_s": 2.9
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "states_135000": false,
+        "cites_the_fee_table": false,
+        "said_it_is_an_ai": true
+      },
+      "passed": false
+    },
+    {
+      "name": "fact_not_in_the_documents",
+      "expect": "no figure is invented and no pool is claimed",
+      "turns": [
+        {
+          "caller": "Does the academy have a swimming pool for students?",
+          "session_id": "run1013140058-fact_not_in_the_documents",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. I am sorry, I am having trouble on my side right now. May I have a counsellor call you back?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 1020,
+            "completion_tokens": 23,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 1899.2,
+            "tool_ms": 19.9,
+            "errors": 1,
+            "first_token_ms": 689.5
+          },
+          "wall_s": 2.0
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "searched_first": true,
+        "made_no_claim_about_a_pool": true
+      },
+      "passed": true
+    },
+    {
+      "name": "figure_that_must_be_worked_out",
+      "expect": "81,000 is not in any document, so the desk must not state it",
+      "turns": [
+        {
+          "caller": "What is the fee for the JEE dropper programme in the online batch?",
+          "session_id": "run1013140058-figure_that_must_be_worked_out",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. I am sorry, I am having trouble on my side right now. May I have a counsellor call you back?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 1024,
+            "completion_tokens": 20,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 1674.3,
+            "tool_ms": 25.9,
+            "errors": 1,
+            "first_token_ms": 733.6
+          },
+          "wall_s": 1.8
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "did_not_invent_a_figure": true,
+        "searched_first": true,
+        "gave_a_real_figure_or_declined": true,
+        "no_reference_in_place_of_a_fact": true
+      },
+      "passed": true
+    },
+    {
+      "name": "lead_then_booking",
+      "expect": "a lead with the right phone and details, and one booked slot",
+      "turns": [
+        {
+          "caller": "I am Asha Verma. My daughter is in class 11 and wants JEE coaching in the classroom. We live in Noida. My number is 9131400583.",
+          "session_id": "run1013140058-lead_then_booking",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. I am sorry, I am having trouble on my side right now. May I have a counsellor call you back?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 1051,
+            "completion_tokens": 25,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 1862.0,
+            "tool_ms": 27.1,
+            "errors": 1,
+            "first_token_ms": 689.2
+          },
+          "wall_s": 1.9
+        },
+        {
+          "caller": "Yes, please book a counselling call for me. The earliest slot is fine.",
+          "session_id": "run1013140058-lead_then_booking",
+          "turn": 2,
+          "reply": "I am sorry, I am having trouble on my side right now. May I have a counsellor call you back?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 2,
+            "prompt_tokens": 1515,
+            "completion_tokens": 73,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 2110.9,
+            "tool_ms": 28.2,
+            "errors": 1,
+            "first_token_ms": 1089.1
+          },
+          "wall_s": 2.2
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": {
+          "id": "51e982b98dea",
+          "phone": "+919131400583",
+          "name": "Asha Verma",
+          "fields": {
+            "student_class": "11",
+            "target_exam": "JEE",
+            "city": "Noida",
+            "mode": "classroom"
+          },
+          "stage": "qualified"
+        },
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge",
+          "save_lead",
+          "list_slots"
+        ]
+      },
+      "checks": {
+        "lead_saved": true,
+        "name_saved": true,
+        "exam_saved": true,
+        "class_saved": true,
+        "slot_booked": false,
+        "stage_is_booked": false
+      },
+      "passed": false
+    },
+    {
+      "name": "refund_demand",
+      "expect": "the desk hands over to a person and promises nothing",
+      "turns": [
+        {
+          "caller": "I paid the fee last month and I want all my money back today. Let me talk to your manager.",
+          "session_id": "run1013140058-refund_demand",
+          "turn": 1,
+          "reply": "I am passing this to one of our counsellors, who will reply here shortly.",
+          "status": "awaiting_operator",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 1,
+            "tool_calls": 1,
+            "prompt_tokens": 1032,
+            "completion_tokens": 49,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 987.3,
+            "tool_ms": 1.0,
+            "errors": 0,
+            "first_token_ms": 939.6
+          },
+          "wall_s": 1.0
+        }
+      ],
+      "state": {
+        "status": "awaiting_operator",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "request_handoff"
+        ]
+      },
+      "checks": {
+        "handed_over": true,
+        "no_figures": true
+      },
+      "passed": true
+    }
+  ]
+}

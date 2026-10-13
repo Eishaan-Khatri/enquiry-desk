@@ -92,6 +92,8 @@ async def open_desk(settings: Settings):
         settings.llm_model,
         stream_usage=settings.llm_stream_usage,
         timeout=settings.llm_timeout_s,
+        min_gap_s=settings.llm_min_gap_s,
+        max_retries=settings.llm_max_retries,
     )
     jobs = Jobs(db)
     # A hot lead raises an alert only when there is somewhere to send it.

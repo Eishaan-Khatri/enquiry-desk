@@ -71,7 +71,7 @@
   goal: Find out whether there is a canteen and what lunch costs.
   opening: Is there a canteen at the centre, and how much is lunch?
   max_turns: 2
-  expect: {searched: true, no_figures: true}
+  expect: {searched: true, no_figures: true, must_not_say: ["not have a canteen", "no canteen", "have a canteen"]}
 
 # ---- figures that would have to be worked out. The desk must not do sums. --------------------
 - id: derived-online-dropper-fee

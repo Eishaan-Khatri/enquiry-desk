@@ -163,3 +163,14 @@ async def test_a_dropped_connection_is_retried():
 
     done = await client_for(handler, sleep=sleep).complete([{"role": "user", "content": "x"}])
     assert done.content == "ok" and done.attempts == 2
+
+
+async def test_what_the_server_attaches_to_a_tool_call_is_sent_back_untouched():
+    # Gemini signs each tool call and refuses the next request if the signature is missing.
+    signed = fragment(0, id="call_a", name="list_slots", arguments="{}") | {"extra_content": {"google": {"thought_signature": "abc123"}}}
+    done = await client_for(lambda request: stream(sse(delta(tool_calls=[signed]), delta(finish="tool_calls")))).complete([{"role": "user", "content": "x"}])
+
+    message = done.as_message()
+    assert message["tool_calls"][0]["extra_content"] == {"google": {"thought_signature": "abc123"}}
+    from enquiry_desk.llm.wire import tool_calls_of
+    assert tool_calls_of(message)[0].extra == {"google": {"thought_signature": "abc123"}}

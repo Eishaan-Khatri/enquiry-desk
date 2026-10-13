@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     llm_stream_usage: bool = True
     # Seconds to wait for the next chunk. A model on a laptop CPU needs far more than an API.
     llm_timeout_s: float = 60.0
+    # Seconds between requests. 0 is no limit. A free tier of 15 requests a minute needs about 4.5.
+    llm_min_gap_s: float = 0.0
+    llm_max_retries: int = 2
 
     tenant_dir: Path = ROOT / "data" / "tenants" / "demo_coaching"
     data_dir: Path = ROOT / "var"

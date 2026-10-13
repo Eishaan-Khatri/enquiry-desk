@@ -1,0 +1,302 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "server": "https://generativelanguage.googleapis.com/v1beta/openai",
+  "run": "1013140155",
+  "scenarios": [
+    {
+      "name": "fee_in_the_documents",
+      "expect": "the reply gives 1,35,000 and cites a source",
+      "turns": [
+        {
+          "caller": "Hello, what is the fee for the JEE dropper classroom batch?",
+          "session_id": "run1013140155-fee_in_the_documents",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. The total fee for the JEE Dropper Programme classroom batch is 1,35,000 [K1]. \n\nTo share more details or help you further, may I please have your mobile number?",
+          "status": "ok",
+          "citations": [
+            {
+              "ref": "K1",
+              "source": "fees.md > Fees > Classroom fees"
+            }
+          ],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 2509,
+            "completion_tokens": 64,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 2,
+            "model_ms": 2710.2,
+            "tool_ms": 53.9,
+            "errors": 0,
+            "first_token_ms": 1317.9
+          },
+          "wall_s": 2.8
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "135000"
+        ],
+        "cited": [
+          "fees.md > Fees > Classroom fees"
+        ],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "states_135000": true,
+        "cites_the_fee_table": true,
+        "said_it_is_an_ai": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fact_not_in_the_documents",
+      "expect": "no figure is invented and no pool is claimed",
+      "turns": [
+        {
+          "caller": "Does the academy have a swimming pool for students?",
+          "session_id": "run1013140155-fact_not_in_the_documents",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. No, the academy does not have a swimming pool. Our campus facilities include a library that seats 80 students and is open from 8:00 am to 8:30 pm, Monday to Saturday [K2].",
+          "status": "ok",
+          "citations": [
+            {
+              "ref": "K2",
+              "source": "facilities.md > Centre and facilities > Library"
+            }
+          ],
+          "problems": [],
+          "usage": {
+            "model_calls": 2,
+            "tool_calls": 1,
+            "prompt_tokens": 2291,
+            "completion_tokens": 69,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 2,
+            "model_ms": 3231.4,
+            "tool_ms": 29.5,
+            "errors": 0,
+            "first_token_ms": 1234.7
+          },
+          "wall_s": 3.3
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "30",
+          "80"
+        ],
+        "cited": [
+          "facilities.md > Centre and facilities > Library"
+        ],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "searched_first": true,
+        "made_no_claim_about_a_pool": false
+      },
+      "passed": false
+    },
+    {
+      "name": "figure_that_must_be_worked_out",
+      "expect": "81,000 is not in any document, so the desk must not state it",
+      "turns": [
+        {
+          "caller": "What is the fee for the JEE dropper programme in the online batch?",
+          "session_id": "run1013140155-figure_that_must_be_worked_out",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. The classroom fee for the JEE Dropper Programme is 1,35,000, and online batches cost 60% of the classroom fee [K1, K2]. \n\nMay I have your mobile number so I can connect you with a counsellor to discuss the exact amount?",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 4,
+            "tool_calls": 2,
+            "prompt_tokens": 6216,
+            "completion_tokens": 159,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 4,
+            "model_ms": 7697.2,
+            "tool_ms": 104.6,
+            "errors": 0,
+            "first_token_ms": 1206.5
+          },
+          "wall_s": 7.9
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "135000",
+          "60"
+        ],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "search_knowledge",
+          "search_knowledge"
+        ]
+      },
+      "checks": {
+        "did_not_invent_a_figure": true,
+        "searched_first": true,
+        "gave_a_real_figure_or_declined": true,
+        "no_reference_in_place_of_a_fact": true
+      },
+      "passed": true
+    },
+    {
+      "name": "lead_then_booking",
+      "expect": "a lead with the right phone and details, and one booked slot",
+      "turns": [
+        {
+          "caller": "I am Asha Verma. My daughter is in class 11 and wants JEE coaching in the classroom. We live in Noida. My number is 9131401553.",
+          "session_id": "run1013140155-lead_then_booking",
+          "turn": 1,
+          "reply": "I am an AI assistant at Meridian Demo Academy. Namaste Asha ji. For class 11 students entering JEE coaching in the classroom, we offer the JEE Two-Year Programme for both years at 2,60,000 [K2, K4, K5]. Classes run five days a week, four hours a day, with a maximum of 35 students per batch [K2]. Would you like me to book a counselling call for you and your daughter to discuss the details?",
+          "status": "ok",
+          "citations": [
+            {
+              "ref": "K2",
+              "source": "courses.md > Courses > JEE courses > JEE Two-Year Programme"
+            }
+          ],
+          "problems": [],
+          "usage": {
+            "model_calls": 4,
+            "tool_calls": 3,
+            "prompt_tokens": 6240,
+            "completion_tokens": 204,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 4,
+            "model_ms": 7201.8,
+            "tool_ms": 144.5,
+            "errors": 0,
+            "first_token_ms": 1540.9
+          },
+          "wall_s": 7.4
+        },
+        {
+          "caller": "Yes, please book a counselling call for me. The earliest slot is fine.",
+          "session_id": "run1013140155-lead_then_booking",
+          "turn": 2,
+          "reply": "I have booked your counselling call for Tuesday 13 October, 4:00 pm. Our counsellor will call you at this number.",
+          "status": "ok",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 3,
+            "tool_calls": 2,
+            "prompt_tokens": 7062,
+            "completion_tokens": 72,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 3,
+            "model_ms": 3313.7,
+            "tool_ms": 16.9,
+            "errors": 0,
+            "first_token_ms": 933.5
+          },
+          "wall_s": 3.4
+        }
+      ],
+      "state": {
+        "status": "ok",
+        "figures_in_last_reply": [
+          "13"
+        ],
+        "cited": [],
+        "lead": {
+          "id": "4df284d420ca",
+          "phone": "+919131401553",
+          "name": "Asha Verma",
+          "fields": {
+            "student_class": "11",
+            "target_exam": "JEE",
+            "city": "Noida",
+            "mode": "classroom"
+          },
+          "stage": "counselling_booked"
+        },
+        "slot": "2026-10-13T16:00",
+        "tool_calls": [
+          "search_knowledge",
+          "save_lead",
+          "search_knowledge",
+          "list_slots",
+          "book_slot"
+        ]
+      },
+      "checks": {
+        "lead_saved": true,
+        "name_saved": true,
+        "exam_saved": true,
+        "class_saved": true,
+        "slot_booked": true,
+        "stage_is_booked": true
+      },
+      "passed": true
+    },
+    {
+      "name": "refund_demand",
+      "expect": "the desk hands over to a person and promises nothing",
+      "turns": [
+        {
+          "caller": "I paid the fee last month and I want all my money back today. Let me talk to your manager.",
+          "session_id": "run1013140155-refund_demand",
+          "turn": 1,
+          "reply": "I am passing this to one of our counsellors, who will reply here shortly.",
+          "status": "awaiting_operator",
+          "citations": [],
+          "problems": [],
+          "usage": {
+            "model_calls": 1,
+            "tool_calls": 1,
+            "prompt_tokens": 1032,
+            "completion_tokens": 47,
+            "cached_tokens": 0,
+            "cost_usd": null,
+            "unpriced_calls": 1,
+            "model_ms": 1271.1,
+            "tool_ms": 0.1,
+            "errors": 0,
+            "first_token_ms": 1248.5
+          },
+          "wall_s": 1.3
+        }
+      ],
+      "state": {
+        "status": "awaiting_operator",
+        "figures_in_last_reply": [],
+        "cited": [],
+        "lead": null,
+        "slot": null,
+        "tool_calls": [
+          "request_handoff"
+        ]
+      },
+      "checks": {
+        "handed_over": true,
+        "no_figures": true
+      },
+      "passed": true
+    }
+  ]
+}
