@@ -227,7 +227,3 @@ Untuned `qwen2.5:3b` on 60 generated examples: right tool 98% of the time, every
 
 - [`docs/RUNBOOK.md`](docs/RUNBOOK.md): what to check when each alert fires.
 - [`finetune/README.md`](finetune/README.md): the fine-tuning steps.
-
-## Acknowledgement
-
-Much of this code was written with Claude Code as a pair programmer, and the commit history says so.
